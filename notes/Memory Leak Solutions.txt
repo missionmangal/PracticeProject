@@ -1,0 +1,60 @@
+Reference -> https://android.jlelse.eu/9-ways-to-avoid-memory-leaks-in-android-b6d81648e35e
+Memory Leak Solutions ->
+
+1.  Broadcast Receivers:
+		Consider this scenario -> you need to register a local broadcast receiver in your activity.
+		If you don’t unregister the broadcast receiver, then it still holds a reference to the activity, even if you close the activity.
+		
+		How to solve this? Always remember to call unregister receiver in onStop() of the activity.
+		
+3.  Singleton Class Reference:
+		Consider the below example — you have defined a Singleton class as displayed below and you need to pass the context in order to
+		fetch some files from the local storage.
+		
+		How to solve this?
+			1: Instead of passing activity context i.e. this to the singleton class, you can pass applicationContext().
+			2: If you really have to use activity context, then when the activity is destroyed, ensure that the context 
+			you passed to the singleton class is set to null.
+			
+5.  Anonymous Class Reference:
+		This follows the same theory as above. 
+		
+6.  AsyncTask Reference:
+		Consider the following example — 
+		You are using an asyncTask to get a string value which is used to update the textView in OnPostExecute().		
+		
+		How to solve this?
+			Option 1: We should always cancel the asyncTask when activity is destroyed. This is because the asyncTask will still be executing even if the activity is destroyed.
+			Option 2: NEVER reference a class inside the activity. If we definitely need to, we should set the class as static as static inner classes don’t hold any implicit reference to its parent activity class.
+			Option 3: Use a weakReference of the textview.
+			
+7.  Handler Reference:
+		Consider the following example — You are using a Handler to redirect to a new screen after 5 seconds.			
+			
+		How to solve this?
+			Option 1: NEVER reference a class inside the activity. If we definitely need to, we should set the class as static. This is because when a Handler is instantiated on the main thread, it is associated with the Looper’s message queue. Messages posted to the message queue will hold a reference to the Handler so that the framework can call Handler#handleMessage(Message) when the Looper eventually processes the message.
+			Option 2: Use a weakReference of the Activity.	
+
+8.	Threads Reference:
+		Same case as above	
+		
+		How to solve this?
+			Option 1: Non-static anonymous classes hold an implicit reference to their enclosing class.
+			Option 2: Close thread in activity onDestroy() to avoid thread leak.
+
+9. TimerTask Reference:
+		The same principle is as Threads can be followed for TimerTask as well. Sample implementation for fixing memory leak is given below:
+			
+			How to solve this?
+Option 1: Cancel timer in activity onDestroy() to avoid memory leak.
+			
+			
+			
+Summery ->
+
+	So basically to summarise:
+	1. Use applicationContext() instead of activity context when possible. If you really have to use activity context, then when the activity is destroyed, ensure that the context you passed to the class is set to null.
+	2. Never use static variables to declare views or activity context.
+	3. Never reference a class inside the activity. If we need to, we should declare it as static, whether it is a thread or a handler or a timer or an asyncTask.
+	4. Always make sure to unregister broadcastReceivers or timers inside the activity. Cancel any asyncTasks or Threads inside onDestroy().
+	5. Always use a weakReference of the activity or view when needed.			

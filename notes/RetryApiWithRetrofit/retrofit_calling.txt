@@ -1,0 +1,68 @@
+Retrofit Api Calling ->
+1.  An Interface which defines the HTTP operations (Functions or methods)
+	inside interface ->
+		public interface GitHubService {
+		@GET("users/{user}/repos")
+		Call<List<Repo>> listRepos(@Path("user") String user);
+		@GET("group/{id}/users")
+		Call<List<User>> groupList(@Path("id") int groupId);
+		}
+	
+2.  A Retrofit class which generates an implementation of the GitHubService interface. The below sample code would be inside the 
+    Retrofit class and this is how it creates an instance of Retrofit and implements the listRepos() method that’s in the GitHubService Interface.
+	
+		Retrofit retrofit = new Retrofit.Builder()
+		.baseUrl(“https://api.github.com/")
+		.build();
+		GitHubService service =  retrofit.create(GitHubService.class);
+		Call<List<Repo>> repos = service.listRepos(“Gino Osahon”);
+
+3. 	POJO class
+
+
+Other Terms
+
+Retrofit Converters ->
+	Retrofit Converters are like an agreement between and Android client and the Server on the format on which data will be represented.
+
+
+
+
+Steps ->
+1. Create object of Retrofit
+2. get Interface instance from retrofit object 
+	iapi = retrofit.create(IApi.class)
+3. call method from interface instance
+	iapi.getList()
+	this will return Call<> object.
+4. call enqueue method from call object. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

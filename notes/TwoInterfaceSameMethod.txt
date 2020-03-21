@@ -1,0 +1,9 @@
+Two interfaces with same methods ->
+
+Q.  Can a java class implement Two interfaces with same methods
+A.  a class can implement both interface but the method will be implemented only once. 
+	Which will work for both interfaces' instances.
+
+Q.  Can a java class implement Two interfaces with same methods having the same signature but different return types??
+A.	No, its an error
+	If two interfaces contain a method with the same signature but different return types, then it is impossible to implement both the interface simultaneously.	
