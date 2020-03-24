@@ -8,15 +8,20 @@ import android.os.IBinder
 
 class LocalService : Service() {
 
-    var mBinder:IBinder ?=null
+    var mBinder:IBinder = LocalBinder()
+    var callBack:ServiceCallback ?= null
+
+    fun setCallback( value:ServiceCallback) {this.callBack =value}
 
     override fun onCreate() {
         super.onCreate()
+        countDown(0)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+
         return super.onStartCommand(intent, flags, startId)
-        countDown()
+
     }
 
     override fun onDestroy() {
@@ -30,19 +35,21 @@ class LocalService : Service() {
     }
 
 
-    fun countDown(){
-        for(i in 1..30){
+    fun countDown( count:Int){
+            if(count<30)
             Handler().postDelayed({
-
+                var c = count;
+                callBack?.sendMessageToActivity(""+(c++))
+                countDown(c)
             },1000)
         }
-    }
+
 
     override fun onBind(intent: Intent?): IBinder? {
         return mBinder
     }
 
-    interface serviceAction{
+    interface ServiceCallback{
         fun sendMessageToActivity(str:String)
     }
 }

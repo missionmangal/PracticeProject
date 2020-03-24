@@ -1,0 +1,18 @@
+Factory pattern ->
+
+1.  Factory pattern is one of the mmost used design pattern in java. This type of pattern comes under creation pattern as this pattern
+    provides one of the best ways to create an object.
+
+2.  In factory pattern, we create objects without exposing the creation logic to the client and refer to newly created object using
+    a common interface.
+
+Steps ->
+1. Create a interface "Shape"
+2. Create classes which implements "Shape" interface (Concreate classes) like  "Circle","Rectangle","Square".
+3. override methods inside interface "Shape".
+4. Create a class by which we can get interface's instance.->
+     create a class ShapeFactory, with a menthod getInstance in which we pass a variable "type".
+5. By using type we return the object of Concreat class like "Circle","Rectangle", "Square".
+
+Note -> in factory pattern user doesn't know about the object creation logic. User just get the object inside there are several
+        classes which implement the same interface.

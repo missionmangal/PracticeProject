@@ -1,0 +1,24 @@
+Ref -> https://medium.com/@sahityakumarsuman/android-service-communication-with-activity-2c01e537ab03
+https://medium.com/the-sixt-india-blog/ways-to-communicate-between-activity-and-service-6a8f07275297
+
+Activity to service communicaiton ->
+:: Todo at service end
+1. Create a "LocalService" class extending Service
+2. inside class create "LocalBinder" a class extending Binder
+3. In LocalBinder class create a method "getService()" which return object of LocalBinder.
+4. Create an instance "mBinder" of IBinder interface and provide it the object of LocalBinder
+5. return mBinder from onBind() method.
+6. Create a "ServiceCallback" interface to communicate from activity to service.
+
+
+
+:: Todo at Activity end
+1. Create an objcct "localService" of LocalService.
+2. Create an object "mConnection" of ServiceConnection.
+3. Implement onConnected and onDisconnected method.
+4. Implement ServiceCallback interface.
+5. in onConnected method set "ServiceCallback" object.
+
+
+
+
