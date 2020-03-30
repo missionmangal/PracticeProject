@@ -9,17 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".service_communication.ServiceActivity">
+        <activity android:name=".service_messenger.MessengerServiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
-        <service android:name=".service_communication.LocalService">
+        <activity android:name=".aidl_ipc.AIDL_IPC_Activity">
 
-        </service>
+        </activity>
+        <activity android:name=".service_communication.ServiceActivity" />
+        <activity android:name=".MainActivity" />
+
+        <service
+            android:name=".service_messenger.MessengerService"
+            android:exported="true" />
+        <service android:name=".service_communication.LocalService" />
+        <service android:name=".aidl_ipc.ProductService" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

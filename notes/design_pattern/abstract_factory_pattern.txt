@@ -1,0 +1,12 @@
+Reference -> https://youtu.be/KC5tCjHFLsU
+Abstract Factory pattern ->
+
+1. Create more than one interfaces  "Shape" ,  "Color"
+2. Create concrete class like "Red","Green","Blue" implementing Color interface.
+3. Create concrete class like "Rectangle","Circle","Square" implementing Shape interface.
+4. Create an abstract class "AbstractFactory" which have abstract methods. like -> getColor(),getshape()
+5. Create ShapeFactory and ColorFactory which implement "AbstractFactory"
+6. In getColor() method we will return object of "Red","Green","Blue" class on condition.
+7. In getshape() method we will return object of "Rectangle","Circle","Square" class on condition.
+8. Create a class FactoryProducer withe a method getFactory(type)
+9. from getFactory we can return object of ColorFactory or ShapeFactory depend oncondition.

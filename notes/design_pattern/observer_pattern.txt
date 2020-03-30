@@ -1,0 +1,17 @@
+Reference -> https://youtu.be/_zGduwU6fIQ
+Observer pattern ->
+    Observer pattern is used when there is one to many relationship between objects such as if one object is modified, it's
+    dependent objects are to be notified automatically.
+
+    Observer pattern fails under behavioural pattern category.
+
+Creation ->
+    Observer pattern uses three actor classes. Subject, Observer and Client. Subject is an object having method to attach
+    and detach observer to a client object.
+    We have created an abstract class Observer and a concrete class Subject that is extending class Observer.
+
+Steps ->
+1. Create Subject class Subject in which we create attach and detach method with a property "state" and we have a list of Observer.
+2. Create an abstract class "Observer" in which we have a method update() and an object of Subject class.
+3. Create concrete observer classes: BinaryObserver, OctalObserver, HexaObserver.
+4. ObserverPatternDemo to use it.
