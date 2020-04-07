@@ -1,0 +1,45 @@
+Reference -> https://medium.com/gradeup/simplest-rxjava-tutorial-for-android-262013ce3545
+
+RxJava ->
+RxJava is java implementation for Reactive programming (Event Based Programming) 
+which in simple terms means that one part of your code would fire an Event
+(a button click, successful api response etc) while some other part of code 
+would observe and react to that particular event asynchronously
+(updating view, handling the api result etc).
+
+
+Observable ->
+If you remember RxJava is Event based programming so Observable is that part of the code which fires up the event.
+You listen to observables for appropriate events.
+
+Observer ->
+The part of the code which listens and react to the event fired from the Observable. 
+You need to override its interface methods for the Observer to work.
+
+Methods
+onSubscribe() -> 
+Method will be called when an Observer subscribes to Observable.
+
+onNext()->
+This method will be called when Observable starts emitting the data.
+
+onError()->
+In case of any error, onError() method will be called.
+
+onComplete()->
+When an Observable completes the emission of all the items,
+onComplete() will be called.
+
+Losses by using AsyncTask ->
+1. Boilerplate code
+2. Multithreading was a nightmare
+3. More error prone
+4. Memory/context leaks are easily created is an inner class and thus holds an implicit reference to the outer class
+5. No error handling
+
+Benefits -> 
+1. Less code
+2. Multithreading (will be explained in upcoming tutorials)
+3. Minimized error occurrences
+4. No memory leaks
+5. And a way to handle the error at one single point(on Error()).
