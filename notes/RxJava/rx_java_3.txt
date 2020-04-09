@@ -1,0 +1,7 @@
+Operators ->
+
+Just ->
+=> Just operator converts an item into an Observable that emits that item.
+=> We get only one object in onNext method. Doesn't matter if there is any
+From ->
+=> Convert various other objects and data types into Observables.

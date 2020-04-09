@@ -1,0 +1,27 @@
+Disposable, DisposableObserver ,CompositeDisposable
+
+
+=> If any Observer is subscribed to any Observable and on getting data from Observable it is doing some
+   UI changes. Now if user moves to another screen it may reason of crashing the app.
+=> To prevent from these type of problem we stop Observing the data on OnStop() or OnDestroy() method.
+=> Now Disposable comes in the picture.
+=> Disposable is used to stop observing.
+
+Disposable->
+=> If we create an Object of Observer we get object of Disposable in onSubscribe() method. we assign this
+   object to our created instance of Disposable.
+=> Now at the time of moving from one fragment to another fragment or finsing the activity we call dispose
+   method of Disposable object to stop observing the data.
+
+DisposableObserver ->
+=> If we have more than one Observer then we can create DisposableObserver instead of Observer.
+=> Because we can direct dispose the Observer by calling the method 'dispose()' on DisposableObserver's object.
+
+One more problem comes now ->
+If we have more than one observer and we forget to dispose any one then it can lead us to crash.
+
+CompositeDisposable->
+=> "So to overcum from this situation We use CompositeDisposable."
+=> We create a object of CompositeDisposable and add Disposable or DisposableObserver to it.
+=> now we can just call clear() method of CompositeDisposable to stop observing all the Observer.
+
