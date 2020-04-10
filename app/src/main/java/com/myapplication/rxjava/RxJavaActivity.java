@@ -2,7 +2,6 @@ package com.myapplication.rxjava;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.myapplication.R;
 
@@ -23,11 +23,13 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import rx.functions.Func1;
 
 public class RxJavaActivity extends AppCompatActivity {
 
@@ -61,8 +63,11 @@ public class RxJavaActivity extends AppCompatActivity {
         list.add("Tiger");
         list.add("Lion");
         list.add("Elephant");
+        img.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.ic_launcher_background));
         prg.setVisibility(View.VISIBLE);
-        getObservable()
+        String imgUrl = "https://newevolutiondesigns.com/images/freebies/cool-wallpaper-3.jpg";
+
+        getBitmapFromURL(imgUrl)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Bitmap>() {
@@ -73,8 +78,8 @@ public class RxJavaActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(Bitmap bitmap) {
-                        updateView(bitmap);
                         prg.setVisibility(View.GONE);
+                        updateView(bitmap);
                     }
 
                     @Override
@@ -90,12 +95,23 @@ public class RxJavaActivity extends AppCompatActivity {
                 });
     }
 
-    public Bitmap getBitmapFromURL(String src) {
+    public Observable<Bitmap> getBitmapFromURL(final String src) {
+
+            Observable<Bitmap> observable = Observable.create(new ObservableOnSubscribe<Bitmap>() {
+                @Override
+                public void subscribe(ObservableEmitter<Bitmap> emitter) throws Exception {
+                    emitter.onNext(getBitmap(src));
+                }
+            });
+            return observable;
+    }
+
+    private Bitmap getBitmap(String imgUrl){
         try {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
             StrictMode.setThreadPolicy(policy);
-            java.net.URL url = new java.net.URL(src);
+            java.net.URL url = new java.net.URL(imgUrl);
             HttpURLConnection connection = (HttpURLConnection) url
                     .openConnection();
             connection.setDoInput(true);
@@ -103,17 +119,24 @@ public class RxJavaActivity extends AppCompatActivity {
             InputStream input = connection.getInputStream();
             Bitmap myBitmap = BitmapFactory.decodeStream(input);
             return myBitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
+        }catch (Exception e){
+            e.fillInStackTrace();
             return null;
         }
     }
-    private Observable getObservable(){
+  /*  private Observable<Bitmap> getObservable(){
 //        final Observable<ArrayList> observable =null;
-        String imgUrl = "https://wallpapercave.com/wp/wp2601438.jpg";
+        String imgUrl = "https://newevolutiondesigns.com/images/freebies/cool-wallpaper-3.jpg";
         return Observable.just(getBitmapFromURL(imgUrl));
+        *//*.map(new Func1<String,Bitmap>(){
 
-    }
+            @Override
+            public Bitmap call(String imgUrl){
+                return getBitmapFromURL(imgUrl);
+            }
+        });*//*
+
+    }*/
     private void updateView(final Bitmap bitmap) {
         new Handler().postDelayed(new Runnable() {
             @Override
