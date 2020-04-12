@@ -1,0 +1,4 @@
+To implement retrofit with RxJava
+1. we have to add RxJavaAdapter at the time of creating retrofit object.
+2. we have to return a Observable from api response.
+rest are same as we call other things from rxjava.

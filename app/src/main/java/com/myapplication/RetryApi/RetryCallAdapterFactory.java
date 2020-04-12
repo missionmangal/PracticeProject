@@ -27,7 +27,7 @@ public class RetryCallAdapterFactory extends CallAdapter.Factory {
 
     @Nullable
     @Override
-    public CallAdapter<?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
+    public CallAdapter<?,?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
         int itShouldRetry = 0;
         final Retry retry = getRetry(annotations);
         if (retry != null) {
@@ -49,11 +49,11 @@ public class RetryCallAdapterFactory extends CallAdapter.Factory {
         return null;
     }
 
-    static final class RetryCallAdapter<R, T> implements CallAdapter<R> {
-        private final CallAdapter<R> delegated;
+    static final class RetryCallAdapter<R, T> implements CallAdapter<R,T> {
+        private final CallAdapter<R,T> delegated;
         private final int maxRetries;
 
-        public RetryCallAdapter(CallAdapter<R> delegated, int maxRetries) {
+        public RetryCallAdapter(CallAdapter<R,T> delegated, int maxRetries) {
             this.delegated = delegated;
             this.maxRetries = maxRetries;
         }
@@ -64,9 +64,14 @@ public class RetryCallAdapterFactory extends CallAdapter.Factory {
         }
 
         @Override
-        public <R1> R adapt(Call<R1> call) {
+        public T adapt(Call<R> call) {
             return delegated.adapt(maxRetries > 0 ? new RetryingCall<>(call, maxRetries) : call);
         }
+
+//        @Override
+//        public <R1> T adapt(Call<R1> call) {
+//            return delegated.adapt(maxRetries > 0 ? new RetryingCall<>(call, maxRetries) : call);
+//        }
 
 //        @Override
 //        public T adapt(final Call<R> call) {
