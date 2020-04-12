@@ -73,7 +73,7 @@ public class RxJavaActivity extends AppCompatActivity {
                 .subscribe(new Observer<Bitmap>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                       disposable = d;
+                        disposable = d;
                     }
 
                     @Override
@@ -97,13 +97,13 @@ public class RxJavaActivity extends AppCompatActivity {
 
     public Observable<Bitmap> getBitmapFromURL(final String src) {
 
-            Observable<Bitmap> observable = Observable.create(new ObservableOnSubscribe<Bitmap>() {
-                @Override
-                public void subscribe(ObservableEmitter<Bitmap> emitter) throws Exception {
-                    emitter.onNext(getBitmap(src));
-                }
-            });
-            return observable;
+        Observable<Bitmap> observable = Observable.create(new ObservableOnSubscribe<Bitmap>() {
+            @Override
+            public void subscribe(ObservableEmitter<Bitmap> emitter) throws Exception {
+                emitter.onNext(getBitmap(src));
+            }
+        });
+        return observable;
     }
 
     private Bitmap getBitmap(String imgUrl){
@@ -124,18 +124,16 @@ public class RxJavaActivity extends AppCompatActivity {
             return null;
         }
     }
-  /*  private Observable<Bitmap> getObservable(){
-//        final Observable<ArrayList> observable =null;
-        String imgUrl = "https://newevolutiondesigns.com/images/freebies/cool-wallpaper-3.jpg";
-        return Observable.just(getBitmapFromURL(imgUrl));
-        *//*.map(new Func1<String,Bitmap>(){
-
+    /*  private Observable<Bitmap> getObservable(){
+  //        final Observable<ArrayList> observable =null;
+          String imgUrl = "https://newevolutiondesigns.com/images/freebies/cool-wallpaper-3.jpg";
+          return Observable.just(getBitmapFromURL(imgUrl));
+          *//*.map(new Func1<String,Bitmap>(){
             @Override
             public Bitmap call(String imgUrl){
                 return getBitmapFromURL(imgUrl);
             }
         });*//*
-
     }*/
     private void updateView(final Bitmap bitmap) {
         new Handler().postDelayed(new Runnable() {

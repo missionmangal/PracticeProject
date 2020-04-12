@@ -1,7 +1,44 @@
 Operators ->
 
+Purpose of Operator->
+=> The purpose of operators is to take a given data set and transform it into 
+   an observable data set. 
+=> Some operators can manipulate the data object and
+   transform them further.
+
+
+There are 3 types of Operators
+1. Create Observables ->
+=> Operators which are used to create obsevables
+=> Operators which take Objects and produce Observables.
+	create()
+	fromIterable(), 
+	fromArray()
+	just()
+	range()
+	repeat()
+
+
+2. Filtering & Sorting ->
+=> Operators which are used to filter the dataset of observables 
+	filter()
+	distinct()
+	take()
+	takeLast()
+	skip()
+
+3. Transform emitted data into other types ->
+=> As the heading suggests these type of operators are used to convert 
+   emitted dataset into another dataset.
+	map()
+	flatMap()
+	switchMap()
+	buffer()
+	concatMap()
+
 Just ->
 => Just operator converts an item into an Observable that emits that item.
 => We get only one object in onNext method. Doesn't matter if there is any
+
 From ->
 => Convert various other objects and data types into Observables.
