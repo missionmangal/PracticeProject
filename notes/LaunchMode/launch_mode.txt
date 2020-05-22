@@ -1,0 +1,30 @@
+Intent Launch Mode ::
+
+1. standard ->
+=> This is the default mode.
+=> The behavior of Activity set to this mode is a new Activity will always be created
+   to work separately with each Intent sent. Imagine, if there are 10 Intents sent to 
+   compose an email, there should be 10 Activities launch to serve each Intent separately.
+   As a result, there could be an unlimited number of this kind of Activity launched in a device.
+
+2.singleTop ->
+=> It acts almost the same as standard one which means that singleTop Activity 
+   instance could be created as many as we want. Only difference is if there already
+   is an Activity instance with the same type at the top of stack in the caller Task, 
+   there would not be any new Activity created, instead an Intent will be sent to an 
+   existed Activity instance through onNewIntent() method. 
+   
+3. singleTask ->
+=> This mode is quite different from standard and singleTop. An Activity with
+   singleTask launchMode is allowed to have only one instance in the system (a.k.a. Singleton). 
+   If there is an existed Activity instance in the system, the whole Task hold
+   the instance would be moved to top while Intent would be delivered through 
+   onNewIntent() method. Otherwise, new Activity would be created and placed in the proper Task. 
+
+4.singleInstance ->
+=> This mode is quite close to singleTask, only single instance of Activity could 
+   be existed in the system. The difference is Task hold this Activity could have 
+   only one Activity, the singleInstance one. If another Activity is called from 
+   this kind of Activity, a new Task would be automatically created to place that 
+   new Activity. Likewise, if singleInstance Activity is called, new Task would be 
+   created to place the Activity.   

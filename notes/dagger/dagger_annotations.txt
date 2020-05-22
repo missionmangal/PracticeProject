@@ -1,0 +1,36 @@
+Dagger ->
+
+1. Use of Dagger ->
+
+
+Annotations ->
+
+
+1. @Inject ->
+=> It is used to inject any class or field object.
+
+2. @Component ->
+=>  To get object of any class we have to create a component interface for that by using @Component 
+    annotation. Which provides us all the initialization of instances. 
+
+3. @Module->
+=>	To provide object of a third party class. In which we can't insert @Inject annotation at constructor.
+=>  In this case we create a @Module class in which we provide the Classes object.
+=>  And we include the module in Component.
+
+4. @Provide
+=>  To provide object of third party class. we use @Provide annotation with the function.
+
+5. @Bind ->
+=>  If we have interface from third party. Then we have to first implement it in any class. And after 
+    that we have to create a Module in which we can provide the object using @Provide or we can optimize
+	it by using @Bind in case of @Bind the module class will be an abstract class.
+	
+6. @Singlaton ->
+=>  To create one object of any class
+
+7. @SubComponent ->
+=>
+
+
+To add dynamic values we can use subcomponent and factory and builder

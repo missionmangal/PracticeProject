@@ -1,0 +1,66 @@
+Coroutine ->
+
+Suspend fun ->
+=> suspend fun is a function in which we can call delay() function and other functions which belong to
+   coroutine.
+=> suspend fun can only be called inside launch()
+
+
+
+async/await :->
+
+=> we use async to call multiple work parallel.
+=> we use await fun to wait until the particular variable get a value.
+
+GlobalScope ->
+=> coroutine will run until it is not closed. or app is not killed
+
+LifecycleScope ->
+=> coroutine will run till the parent is alive. like if coroutine is started in activity it'll be 
+   destroyed when the activity is destroyed.
+   
+viewModelScope ->
+=> Scope within viewmodel
+   
+   
+coroutine vs thread ->
+
+we can say that Coroutines and the threads both are multitasking. But the difference is that 
+threads are managed by the OS and coroutines by the users as it can execute a few lines of 
+function by taking advantage of the cooperation.
+
+Launch vs Async ->
+
+=> The difference is that the launch{} does not return anything and the async{}returns 
+   an instance of Deferred<T>, which has an await()function that returns the 
+   result of the coroutine like we have future in Java in which we do future.get() to the get the result.
+
+
+Coroutines are available in many languages. Basically, there are two types of Coroutines:
+
+1. Stackless
+2. Stackful
+=> Kotlin implements stackless coroutines — it means that the coroutines don’t have their 
+   own stack, so they don’t map on the native thread.
+   
+WithContext ->
+=> withContext is nothing but another way of writing the async where we do not have to write await().
+
+withTimeout ->
+=> If we want to complete any task within a specific time we use this.
+
+To specify where the coroutines should run, Kotlin provides three dispatchers that you can use:
+
+Dispatchers.Main ->
+=> Use this dispatcher to run a coroutine on the main Android thread.
+This should be used only for interacting with the UI and performing quick work.
+Examples include calling suspend functions, running Android UI framework operations,
+and updating LiveData objects.
+
+Dispatchers.IO ->
+=> This dispatcher is optimized to perform disk or network I/O outside of the main thread.
+Examples include using the Room component, reading from or writing to files, and running any network operations.
+
+Dispatchers.Default ->
+=> This dispatcher is optimized to perform CPU-intensive work outside of the main thread.
+Example use cases include sorting a list and parsing JSON.

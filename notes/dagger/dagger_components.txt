@@ -1,0 +1,19 @@
+Dagger main component->
+
+1. Dependency Provider: 
+
+=> Is the one who provide the objects that are called dependencies. 
+=> The class that is responsible for providing dependencies is annotated as @Module. 
+=> The methods that provides dependency(object) in this class to be annotated as @Provider.
+
+2. Dependency Consumer:
+ 
+=> Dependency consumer is a class where we need to instantiate the objects. 
+=> But we don't need to instantiate it with the new keyword. 
+=> Don't even need to get it as an argument. But dagger will provide the dependency, and for that
+=> We just need to annotate the object decleration with @Inject
+
+3. Component:
+
+=> Acts as a interface between dependency consumer and dependency provider annotated with @Component
+   and it's an interface.

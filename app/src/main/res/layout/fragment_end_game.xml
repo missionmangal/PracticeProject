@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#5512ab"
+        tools:context=".navigation_component.fragments.EndGameFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="You have won the game"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="@color/color_white" />
+
+        <Button
+            android:id="@+id/btnAction"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Restart Game"
+            android:textColor="@color/color_white"
+            android:textSize="16dp" />
+        <Button
+            android:id="@+id/btnAction2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnAction"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            android:text="Start Activity"
+            android:textColor="@color/color_white"
+            android:textSize="16dp" />
+
+    </RelativeLayout>
+</layout>

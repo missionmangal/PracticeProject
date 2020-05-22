@@ -1,0 +1,22 @@
+Kotlin Scope Functions
+ Let , With , Apply
+ 
+Let ->
+=> it's a scoping function. Which gives copy of object inside it as "it". We can't assign new value
+   to "it". The last statement is returned from the scope.
+   
+Also ->
+=> Unlike let, it returns the original object instead of any new return data. Hence the return data 
+   has always the same type.
+=> Like let, also uses "it" too.
+
+Apply ->
+=> Kotlin apply is an extension function on a type. It runs on the object reference 
+   (also known as receiver) into the expression and returns the object reference on completion.
+   
+Note:->
+=> In apply it isn’t allowed. If the property name of the data class is unique in the function,
+   you can omit this.
+
+   We should use also only when we don’t want to shadow this.
+   

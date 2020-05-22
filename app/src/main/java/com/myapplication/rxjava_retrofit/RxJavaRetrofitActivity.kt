@@ -116,13 +116,13 @@ class RxJavaRetrofitActivity : AppCompatActivity() {
                         .getPost()
                         .subscribeOn(Schedulers.io())
                         .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
-//                        .flatMap(object : Function<List<PostDataModel>?, ObservableSource<PostDataModel>> {
-//                            override fun apply(posts: List<PostDataModel>): ObservableSource<PostDataModel> {
-//                                adapter.setPosts(posts)
-//                                return Observable.fromIterable(posts)
-//                                        .subscribeOn(Schedulers.io())
-//                            }
-//                        })
+                        /*.flatMap(object : Function<List<PostDataModel>?, ObservableSource<PostDataModel>> {
+                            override fun apply(posts: List<PostDataModel>): ObservableSource<PostDataModel> {
+                                adapter.setPosts(posts)
+                                return Observable.fromIterable(posts)
+                                        .subscribeOn(Schedulers.io())
+                            }
+                        })*/
 
                         .flatMap {
                             adapter.setPosts(it)

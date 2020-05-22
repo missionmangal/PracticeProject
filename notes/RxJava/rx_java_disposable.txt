@@ -28,3 +28,8 @@ CompositeDisposable->
 => We create a object of CompositeDisposable and add Disposable or DisposableObserver to it.
 => now we can just call clear() method of CompositeDisposable to stop observing all the Observer.
 
+
+subscribe() vs subscribeWith()
+
+=> subscribe returns Unit/Void
+=> subscribeWith returns Observer

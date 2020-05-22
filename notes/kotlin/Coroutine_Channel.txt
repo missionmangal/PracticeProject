@@ -1,0 +1,34 @@
+Coroutine Channel ->
+
+Send/ receive ->
+=> We can send elements to the channel from the producer and receive them by
+the consumer.
+
+Channel.offer() and Channel.poll() ->
+
+=> Offer() and poll() are similar to send() and receive(), 
+=> these two functions are not suspending functions.
+
+ 
+Channel capacity policy->
+1. Rendezvous channel (No buffer) -> 
+=> the rendezvous channel is the default capacity policy. This channel has no buffer. 
+   An element is transferred from sender to receiver only when two invocations meet in time, 
+   which means the channel.send() suspends until another channel.receive() is invoked 
+   and channel.receive() will also suspend until another channel.send() is invoked.
+   
+2. Buffered channel ->
+=> Give a buffer capacity to the channel. When the buffer is full, the channel.send() will 
+   suspend the coroutine until some elements in the channel are consumed. 
+   by default buffer capacity is 64
+   
+3. Unlimited channel ->
+=> Give an unlimited buffer capacity to the channel(equals to Int.MAX_VALUE in code). 
+   It means the channel.send() will never suspend the coroutine and every element could 
+   be put into the channel. However, we need to consider that if the memory exhausts, 
+   we’ll get an OutOfMemoryError.
+   
+4. Conflated channel
+=> The element in the conflated channel will be replaced by the lastest element. 
+   So the channel.send() will never be suspended and 
+   the channel.receive() will always get the lastest element.

@@ -1,0 +1,7 @@
+Map vs FlatMap
+
+Map-> 
+=> Map transforms the items emitted by an Observable by applying a function to each item.
+
+FlatMap -> 
+=> FlatMap transforms the items emitted by an Observable into Observables.

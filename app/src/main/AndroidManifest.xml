@@ -2,38 +2,52 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.myapplication">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:allowBackup="true"
+        android:name="com.base.MyApplication"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".rxjava.RxJavaActivity"/>
-        <activity android:name=".rxjava_retrofit.RxJavaRetrofitActivity">
-
-        </activity>
-        <activity android:name=".service_broadcast.BroadcastServiceActivity">
-
-        </activity>
-        <activity android:name=".service_messenger.MessengerServiceActivity" />
-        <activity android:name=".service_communication.ServiceActivity" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".coroutine.CoroutineActivity2"/>
+        <activity android:name=".coroutine.CoroutineActivity1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".live_data.SecondActivity" />
+        <activity android:name=".live_data.LivedataActivity">
+
+        </activity>
+        <activity android:name=".rxjava_again.RxJavaAgainActivity"></activity>
+        <activity android:name=".dagger.DaggerActivity" />
+        <activity android:name=".looper_thread.LooperActivity" />
+        <activity android:name=".looper_thread.LooperActivityJava" />
+        <activity android:name=".espresso_testing.ListActivity" />
+        <activity android:name=".navigation_component.NavigationActivity" />
+        <activity android:name=".espresso_testing.LoginActivity" />
+        <activity android:name=".coroutine.ChannelActivity" />
+        <activity android:name=".coroutine.CoroutineActivity" />
+        <activity android:name=".rxjava.RxJavaActivity" />
+        <activity android:name=".rxjava_retrofit.RxJavaRetrofitActivity" />
+        <activity android:name=".service_broadcast.BroadcastServiceActivity" />
+        <activity android:name=".service_messenger.MessengerServiceActivity" />
+        <activity android:name=".service_communication.ServiceActivity" />
+        <activity android:name=".MainActivity" />
 
         <service
             android:name=".service_messenger.MessengerService"
             android:exported="true" />
         <service android:name=".service_communication.LocalService" />
         <service android:name=".service_broadcast.BroadcastService" />
-    </application>
 
-    <uses-permission android:name="android.permission.INTERNET" />
+        <uses-library android:name="android.test.runner" />
+    </application>
 
 </manifest>

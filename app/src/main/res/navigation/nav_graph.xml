@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startGameFragment2">
+    <fragment
+        android:id="@+id/startGameFragment2"
+        android:name="com.myapplication.navigation_component.fragments.StartGameFragment"
+        android:label="StartGameFragment" >
+        <action
+            android:id="@+id/action_startGameFragment2_to_runningGameFragment"
+            app:destination="@id/runningGameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/runningGameFragment"
+        android:name="com.myapplication.navigation_component.fragments.RunningGameFragment"
+        android:label="RunningGameFragment" >
+        <action
+            android:id="@+id/action_runningGameFragment_to_endGameFragment"
+            app:destination="@id/endGameFragment"
+            app:popUpTo="@id/startGameFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/endGameFragment"
+        android:name="com.myapplication.navigation_component.fragments.EndGameFragment"
+        android:label="EndGameFragment" >
+        <action
+            android:id="@+id/action_endGameFragment_to_startGameFragment2"
+            app:destination="@id/startGameFragment2"
+            app:popUpTo="@id/startGameFragment2"
+            app:popUpToInclusive="true"
+            app:popExitAnim="@anim/fragment_close_exit"
+            app:launchSingleTop="true" />
+        <action
+            android:id="@+id/action_endGameFragment_to_channelActivity"
+            app:destination="@id/channelActivity"
+            app:popUpTo="@id/startGameFragment2" />
+        <action
+            android:id="@+id/action_endGameFragment_pop_including_startGameFragment2"
+            app:popUpTo="@id/startGameFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <activity
+        android:id="@+id/channelActivity"
+        android:name="com.myapplication.coroutine.ChannelActivity"
+        android:label="ChannelActivity" />
+</navigation>

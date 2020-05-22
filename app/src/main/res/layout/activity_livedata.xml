@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+<data>
+
+    <variable
+        name="viewModel"
+        type="com.myapplication.live_data.LiveDataViewModel" />
+</data>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_sec_activity"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Second Activity" />
+
+    <Button
+        android:id="@+id/btn_get_random"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Get Random" />
+
+    <TextView
+        android:id="@+id/tv_random"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@={viewModel.randomNumber}" />
+
+</LinearLayout>
+</layout>
