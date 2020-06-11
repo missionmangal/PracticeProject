@@ -52,7 +52,7 @@ class ServiceActivity : AppCompatActivity() , OnClickListener{
 
             mBoundService?.setCallback( object :LocalService.ServiceCallback{
                 override fun sendMessageToActivity(str: String) {
-                    textBtn?.setText("Count :: $str")
+                    textBtn?.setText("$str")
                 }
             })
         }
@@ -60,7 +60,9 @@ class ServiceActivity : AppCompatActivity() , OnClickListener{
 
     fun doBindService(){
         if(!mIsBound) {
-            bindService(Intent(context, LocalService::class.java), mConnection, Context.BIND_AUTO_CREATE)
+            var intent = Intent(context, LocalService::class.java)
+            intent.putExtra("str","Random")
+            bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
             mIsBound = true;
         }else
             Toast.makeText(this,"Service is already running ",Toast.LENGTH_LONG).show()

@@ -21,7 +21,7 @@ import kotlin.random.Random
 
 class LivedataActivity : AppCompatActivity() {
 
-     lateinit var viewModel:LiveDataViewModel
+    lateinit var viewModel:LiveDataViewModel
     lateinit var mBinding : ActivityLivedataBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

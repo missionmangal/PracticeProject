@@ -1,14 +1,12 @@
 package com.myapplication.coroutine
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.myapplication.R
-import kotlinx.android.synthetic.main.activity_channel.*
 import kotlinx.android.synthetic.main.activity_coroutine1.*
-import kotlinx.android.synthetic.main.activity_coroutine1.tv_count
 import kotlinx.coroutines.*
-import java.util.concurrent.TimeUnit
 
 class CoroutineActivity1 : AppCompatActivity() {
 
@@ -29,24 +27,35 @@ class CoroutineActivity1 : AppCompatActivity() {
     fun count(){
 //        MainScope(Dispatchers.IO).launch {  }
 
-        CoroutineScope(Dispatchers.IO).launch() {
-            for(i in 11..20){
-                println("count =$i  ${Thread.currentThread().name}")
-//                launch {
-                    println("countMain =$i  ${Thread.currentThread().name}")
-                    tv_count.setText("count =$i  ${Thread.currentThread().name}")
-//                }
+         job=  MainScope().launch() {
+            for(i in 11..40){
 
-                delay(2000L)
+                    println("$this@CoroutineActivity1 countMain =$i  ${Thread.currentThread().name}")
+
+                    tv_count.setText("$this@CoroutineActivity1 count =$i  ${Thread.currentThread().name}")
+                delay(1000L)
+                if(i==25)
+                    job?.cancel("My Choice to cancel")
             }
         }
-//        job
+        lifecycleScope.launch(){
+            delay(5000)
+            var intent = Intent(this@CoroutineActivity1, CoroutineActivity2::class.java)
+            startActivity(intent)
+            finish()
+        }
+        job?.invokeOnCompletion {
+            if(it is Throwable){
+                println("Coroutine canceled ${it.message}")
+            }else
+                println("Coroutine completed")
+        }
     }
 
     override fun onStop() {
         super.onStop()
 //        CoroutineScope(Dispatchers.IO).cancel()
-        mainScope.cancel()
-        job?.cancel()
+//        mainScope.cancel()
+//        job?.cancel()
     }
 }

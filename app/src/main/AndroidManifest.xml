@@ -13,19 +13,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".coroutine.CoroutineActivity2"/>
-        <activity android:name=".coroutine.CoroutineActivity1">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".service_2.messanger.Messangerctivity2">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+        <activity android:name=".coroutine.CoroutineActivity2" />
+        <activity android:name=".coroutine.CoroutineSharedValue" >
+
+        </activity>
+        <activity android:name=".coroutine.CoroutineActivity1" >
+
+
+        </activity>
+        <activity android:name=".service_2.binder.ServiceBinderActivity"></activity>
         <activity android:name=".live_data.SecondActivity" />
-        <activity android:name=".live_data.LivedataActivity">
+        <activity android:name=".live_data.LivedataActivity"></activity>
+        <activity android:name=".rxjava_again.RxJavaAgainActivity" >
 
         </activity>
-        <activity android:name=".rxjava_again.RxJavaAgainActivity"></activity>
         <activity android:name=".dagger.DaggerActivity" />
         <activity android:name=".looper_thread.LooperActivity" />
         <activity android:name=".looper_thread.LooperActivityJava" />
@@ -37,14 +41,27 @@
         <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".rxjava_retrofit.RxJavaRetrofitActivity" />
         <activity android:name=".service_broadcast.BroadcastServiceActivity" />
-        <activity android:name=".service_messenger.MessengerServiceActivity" />
-        <activity android:name=".service_communication.ServiceActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".service_messenger.MessengerServiceActivity">
+
+        </activity>
+        <activity android:name=".service_communication.ServiceActivity"></activity>
+        <activity android:name=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <service
             android:name=".service_messenger.MessengerService"
             android:exported="true" />
+        <service
+            android:name=".service_2.messanger.MessengerService2"
+            android:exported="true" />
         <service android:name=".service_communication.LocalService" />
+        <service android:name=".service_2.binder.ServiceBinder" />
         <service android:name=".service_broadcast.BroadcastService" />
 
         <uses-library android:name="android.test.runner" />

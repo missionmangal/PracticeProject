@@ -8,6 +8,7 @@ import android.os.IBinder
 
 class LocalService : Service() {
 
+    private var isRunning= true
     var mBinder:IBinder = LocalBinder()
     var callBack:ServiceCallback ?= null
 
@@ -25,6 +26,7 @@ class LocalService : Service() {
     }
 
     override fun onDestroy() {
+        isRunning = false
         super.onDestroy()
     }
 
@@ -36,7 +38,7 @@ class LocalService : Service() {
 
 
     fun countDown( count:Int){
-            if(count<30)
+            if(count<=30&& isRunning)
             Handler().postDelayed({
                 var c = count;
                 callBack?.sendMessageToActivity(""+(c++))

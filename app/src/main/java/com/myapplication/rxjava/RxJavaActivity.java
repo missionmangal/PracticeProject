@@ -95,6 +95,10 @@ public class RxJavaActivity extends AppCompatActivity {
                 });
     }
 
+
+
+
+
     public Observable<Bitmap> getBitmapFromURL(final String src) {
 
         Observable<Bitmap> observable = Observable.create(new ObservableOnSubscribe<Bitmap>() {

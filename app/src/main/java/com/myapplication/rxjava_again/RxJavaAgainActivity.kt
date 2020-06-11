@@ -20,6 +20,7 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.functions.Function
+import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.schedulers.TestScheduler
 import kotlinx.android.synthetic.main.activity_retrofit_again.*
@@ -46,33 +47,70 @@ class RxJavaAgainActivity : AppCompatActivity() {
 //            getEmployeesUsingFlatMap()
 //            concatList()
 //            testSwitchMap1()
-
+//            useSwitchMapSearchText()
+            useSubscribeWith()
         }
 //        ed_search.addTextChangedListener {
-            useSwitchMapSearchText()
+
 //        }
+    }
+
+    var disposable:Disposable?=null
+    //    SubscribeWith
+    fun useSubscribeWith() {
+
+        var actualOutput = ArrayList<String>()
+        var scheduler = TestScheduler()
+        var keywordsToSearch = arrayListOf<String>("b", "bo", "boo", "book", "books")
+
+        var observable = Observable.fromIterable(keywordsToSearch)
+                .map{item -> item+" Yo man"}
+        observable.delay(200, TimeUnit.MILLISECONDS)
+        var disp =observable.subscribeWith(object :DisposableObserver<String>(){
+            override fun onComplete() {
+                println("onComplete")
+            }
+
+            /*override fun onSubscribe(d: Disposable) {
+                println("Onsubscribe")
+            }*/
+
+            override fun onNext(t: String) {
+                println(t)
+            }
+
+            override fun onError(e: Throwable) {
+                println(e.message)
+            }
+        })
+        disp.isDisposed
+        disposable = observable.subscribe {
+            item->println(item)
+//            if(item.equals("book"))
+//                disposable?.dispose()
+        }
     }
 
 
 //    Flat Map Start
 
-    fun testFlatMap(){
-        var actualOutput= ArrayList<String>()
+    fun testFlatMap() {
+        var actualOutput = ArrayList<String>()
         var scheduler = TestScheduler()
         var keywordsToSearch = arrayListOf<String>("b", "bo", "boo", "book", "books")
 
         Observable.fromIterable(keywordsToSearch)
                 .flatMap {
-                    return@flatMap Observable.just(it+"FirstResult")
+                    return@flatMap Observable.just(it + "FirstResult")
                 }
-                .delay(10,TimeUnit.SECONDS,scheduler)
+                .delay(10, TimeUnit.SECONDS, scheduler)
                 .toList()
                 .doOnSuccess {
-                     actualOutput.addAll(it)
+                    actualOutput.addAll(it)
                 }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
-        scheduler.advanceTimeBy(1,TimeUnit.MINUTES)
+        scheduler.advanceTimeBy(1, TimeUnit.MINUTES)
 
         println(actualOutput)
         tv_data.setText(actualOutput.toString())
@@ -81,21 +119,21 @@ class RxJavaAgainActivity : AppCompatActivity() {
 //    Flat Map End
 //    Switch Map Start
 
-    fun testSwitchMap1(){
+    fun testSwitchMap1() {
         var race = arrayListOf<String>("b", "bo", "boo", "book", "books")
         Observable.fromIterable(race)
                 .switchMap {
                     val delay = Random.nextLong(2)
                     return@switchMap Observable.just(it)
-                            .map{
+                            .map {
                                 val c: Calendar = Calendar.getInstance()
 
                                 val df = SimpleDateFormat("yyyy-MM-dd HH:mm:sss")
                                 val formattedDate: String = df.format(c.getTime())
                                 println(formattedDate + it + "Result")
-                                it+" Result"
+                                it + " Result"
                             }
-                            .delay(delay, TimeUnit.SECONDS,Schedulers.io())
+                            .delay(delay, TimeUnit.SECONDS, Schedulers.io())
                 }
                 .toList()
                 .doOnSuccess {
@@ -112,40 +150,40 @@ class RxJavaAgainActivity : AppCompatActivity() {
 
     }
 
-    fun testSwitchMap(){
-        var actualOutput= ArrayList<String>()
-        var tempOutput= ArrayList<String>()
+    fun testSwitchMap() {
+        var actualOutput = ArrayList<String>()
+        var tempOutput = ArrayList<String>()
         var scheduler = TestScheduler()
         var keywordsToSearch = arrayListOf<String>("b", "bo", "boo", "book", "books")
 
         Observable.fromIterable(keywordsToSearch)
                 .switchMap {
-                    return@switchMap Observable.just(it+" Result")
+                    return@switchMap Observable.just(it + " Result")
                 }
 //                .flatMap {
 //                    return@flatMap Observable.just(it+" Result")
 //                }
-                .delay(10,TimeUnit.SECONDS,scheduler)
+                .delay(10, TimeUnit.SECONDS, scheduler)
 
                 .doOnNext() {
-                     actualOutput.add(it)
+                    actualOutput.add(it)
                     println(actualOutput)
                 }
                 .toList()
                 .doOnSuccess {
                     tempOutput.addAll(it)
-                    println("temp Output ::"+tempOutput)
+                    println("temp Output ::" + tempOutput)
 
                 }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe()
-        scheduler.advanceTimeBy(1,TimeUnit.MINUTES)
+        scheduler.advanceTimeBy(1, TimeUnit.MINUTES)
 
         println(actualOutput)
         tv_data.setText(actualOutput.toString())
     }
 
-//    Flat Switch End
+    //    Flat Switch End
 //************Flat Map APi Start /
     private fun getEmployeesUsingFlatMap() {
         var apis = RetrofiGenerator.getRequestApi()
@@ -291,8 +329,8 @@ class RxJavaAgainActivity : AppCompatActivity() {
 
     var iapi = RetrofiGenerator.getRequestApi()
 
-    fun useSwitchMapSearchText(){
-         ed_search.textChangeEvents()
+    fun useSwitchMapSearchText() {
+        ed_search.textChangeEvents()
 
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -300,38 +338,38 @@ class RxJavaAgainActivity : AppCompatActivity() {
                     it.start
                     it.text.toString()
                 }
-                .debounce(400L,TimeUnit.MILLISECONDS)
+                .debounce(400L, TimeUnit.MILLISECONDS)
                 .distinctUntilChanged()
-                .switchMap  (object : Function<String,Observable<TreeModel>?>{
+                .switchMap(object : Function<String, Observable<TreeModel>?> {
                     override fun apply(t: String): Observable<TreeModel> {
                         println("bbbbbb ${t}")
                         return iapi.searchApi(t, 5)
                                 .subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
-                                .delay(2,TimeUnit.SECONDS,Schedulers.io())
+                                .delay(2, TimeUnit.SECONDS, Schedulers.io())
 
 
                     }
                 })
-                 .subscribe(
-                         object :Observer<TreeModel>{
-                             override fun onComplete() {
+                .subscribe(
+                        object : Observer<TreeModel> {
+                            override fun onComplete() {
 
-                             }
+                            }
 
-                             override fun onSubscribe(d: Disposable) {
-                             }
+                            override fun onSubscribe(d: Disposable) {
+                            }
 
-                             override fun onNext(it: TreeModel) {
+                            override fun onNext(it: TreeModel) {
 
-                                 println("aaaaaaa ${it}")
-                                 tv_data.setText(it.toString())
-                             }
+                                println("aaaaaaa ${it}")
+                                tv_data.setText(it.toString())
+                            }
 
-                             override fun onError(e: Throwable) {
-                             }
-                         }
-                 )
+                            override fun onError(e: Throwable) {
+                            }
+                        }
+                )
     }
 
     fun useSwitchMap(search: String) {
@@ -361,6 +399,7 @@ class RxJavaAgainActivity : AppCompatActivity() {
 
         }
     }
+
     fun EditText.addTextWatcher(): Flowable<EditTextFlow> {
         return Flowable.create<EditTextFlow>({ emitter ->
             addTextChangedListener(object : TextWatcher {
@@ -381,7 +420,6 @@ class RxJavaAgainActivity : AppCompatActivity() {
 
 //***********Switch Map Api End
 //***********Switch Map  Start
-
 
 
 //***********Switch Map  End

@@ -1,0 +1,16 @@
+Coroutine Scopes ->
+
+1. LifecycleScope ->
+   it works inside the activity/ fragment scope. 
+   If activity gets finished coroutine will be cancelled.
+ 
+2. viewmodelScope->
+	it works inside the viewmodel scope.
+	if viewmodel gets destroyed coroutine will be cancelled.
+	
+ 
+2. MainScope ->
+
+
+
+3. CoroutineScope -> 

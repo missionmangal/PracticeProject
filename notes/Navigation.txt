@@ -1,0 +1,10 @@
+Navigation
+
+PopUpTo(Inclusive false)->
+
+=> pops up to specified destination.
+
+Inclusive true -> 
+=> remove destinated fragment also
+
+

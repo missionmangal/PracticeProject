@@ -2,6 +2,8 @@ package com.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.data.Contact;
+import com.data.DataX;
 import com.data.Topics;
 import com.myapplication.Network.BaseResponse;
 import com.myapplication.Network.IApi;
@@ -45,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
                 callApiFailed();
             }
         });
+        Contact con;
+        Bitmap icon = BitmapFactory.decodeResource(this.getResources(),
+                R.drawable.ic_launcher_foreground);
+        Long maxMemory = Runtime.getRuntime().maxMemory();
+        System.out.println(maxMemory);
+        int[] matrix = new int[(int) (maxMemory + 1)];
+        for(int i = 0; i < matrix.length; ++i) {
+//            matrix[i] = i + 1;
+            System.out.println(i);
+        }
     }
 
 //    Testing retry callling with api

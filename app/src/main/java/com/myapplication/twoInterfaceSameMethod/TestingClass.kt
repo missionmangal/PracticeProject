@@ -7,6 +7,10 @@ fun main(args:Array<String>){
         var secInterface: SecInterface = it
         first.sameMethod()
         secInterface.sameMethod()
+        while(true){
+            var a = 5
+            print("Hello man\n+$a")
+        }
     }
 
 }
