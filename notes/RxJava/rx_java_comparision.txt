@@ -1,0 +1,26 @@
+
+Subscribe vs SubscribeWith ->
+
+=> subscribe returns Disposable
+=> SubscribeWith returns Observer which is provided as a parameter.
+
+=> If we provide Observer's object as param in subscribe it'll return "Unit".
+=> If we provide direct definition of onNext, onError, onComplete it'll return Disposable.
+
+=> subscribe has many overloaded methods.
+=> subscribeWith is only one method.
+
+**************************************************************
+Update value after subscribing ->
+If there are multiple subscriber and we update the value which we passed 
+
+Just ->
+=>  We'll not get updated value.
+   
+Create,Defer ->
+=> Will get updated value.
+***************************************************************
+
+Create vs Defer ->
+=> The only downside to defer() is that it creates a new Observable each time you get a subscriber.
+   create() can use the same function for each subscriber, so it's more efficient   
