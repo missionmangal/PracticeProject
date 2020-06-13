@@ -38,7 +38,13 @@
         <activity android:name=".espresso_testing.LoginActivity" />
         <activity android:name=".coroutine.ChannelActivity" />
         <activity android:name=".coroutine.CoroutineActivity" />
-        <activity android:name=".rxjava.RxJavaActivity" />
+        <activity android:name=".rxjava.RxJavaActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".rxjava_retrofit.RxJavaRetrofitActivity" />
         <activity android:name=".service_broadcast.BroadcastServiceActivity" />
         <activity android:name=".service_messenger.MessengerServiceActivity">
@@ -46,11 +52,7 @@
         </activity>
         <activity android:name=".service_communication.ServiceActivity"></activity>
         <activity android:name=".MainActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
 

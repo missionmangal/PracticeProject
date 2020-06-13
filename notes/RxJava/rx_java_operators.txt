@@ -61,10 +61,13 @@ Throw ->
 5.Scan —>
 => apply a function to each item emitted by an Observable, sequentially, and emit each
    successive value
+=> We get 2 pararmeters first is which was emitted last time. and second is new emittion.
 
 6.Window —>
 => periodically subdivide items from an Observable into Observable windows and emit these
    windows rather than emitting the items one at a time
+=> Emits observable not items.
+=> Need to call flatmap to return item after get observable from window.
 
 
 

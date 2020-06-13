@@ -1,12 +1,10 @@
-package com.myapplication.rxjava.CreateOperators
+package com.myapplication.rxjava.RxJavaOperators
 
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.Observer
-import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import org.reactivestreams.Publisher
 import org.reactivestreams.Subscriber
 import java.util.concurrent.Callable
@@ -17,19 +15,33 @@ import java.util.concurrent.TimeUnit
 fun main() {
 
     var test = RxJavaCreateOperators();
-//    test.observableUsingJust()
+    test.observableUsingJust()
 //    test.observableUsingCreate()
 //    test.observableUsingDefer()
 //    test.observableUsingEmptyNeverThrow()
 //    test.observableUsingInterval()
 //    test.observableUsingRange()
-    test.observableUsingTimer()
+//    test.observableUsingTimer()
 }
 
 class RxJavaCreateOperators {
     var arr = arrayOf<String>("Hi", "Hey", "Hello", "Bonzo")
     var arr1 = arrayOf<String>("Hi1", "Hey1", "Hello1", "Bonzo1")
 
+    private fun getArray():Array<String> {
+        var defer:Deferred<Unit>;
+        System.out.println("Get Array Started")
+        runBlocking {
+
+            System.out.println("Get Array Waiting")
+           defer= async { delay(5000) }
+
+            defer.await()
+            System.out.println("Get Array Waiting End")
+        }
+        System.out.println("Get Array Sent")
+        return arr;
+    }
     var observer1 = object : Observer<String> {
         override fun onComplete() {
             System.out.println("Completed :: ")
@@ -73,7 +85,7 @@ class RxJavaCreateOperators {
 
     //    ********************JUST START***************************************
     fun observableUsingJust() {
-        var observable = Observable.just(arr)
+        var observable = Observable.just(getArray())
         observable.subscribe({
             it.forEach { System.out.println(it) }
         }, { System.out.println(it.message) },
@@ -94,7 +106,7 @@ class RxJavaCreateOperators {
 //    ********************CREATE START***************************************
     fun observableUsingCreate() {
         var observable = Observable.create { emitter: ObservableEmitter<String> ->
-            arr.forEach {
+            getArray().forEach {
                 if (it.equals("Bonzo")) {
                     emitter.onError(Throwable("Error Spanish"))
                 }
