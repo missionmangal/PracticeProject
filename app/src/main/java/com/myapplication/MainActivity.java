@@ -4,26 +4,25 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.icu.text.UnicodeSetSpanner;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.data.Contact;
-import com.data.DataX;
 import com.data.Topics;
 import com.myapplication.Network.BaseResponse;
 import com.myapplication.Network.IApi;
 import com.myapplication.Network.NetworkCall;
-import com.myapplication.Network.RemoteDataSource;
 import com.myapplication.Network.ServiceCallBack;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 count=0;
                 callApiSuccess();
+
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(i);
         }
     }
+
+
+
 
 //    Testing retry callling with api
     public void callApiSuccess(){
@@ -116,4 +119,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(networkCall.requestCallback());
 
     }
+
+
+
 }

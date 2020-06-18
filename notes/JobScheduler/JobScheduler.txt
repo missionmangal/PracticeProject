@@ -1,0 +1,8 @@
+JobScheduler vs WorkManager ->
+=> WorkManager uses JobScheduler service to schedule the jobs. If JobScheduler is not supported
+   by the device, then it uses Firebase JobDispatcher service. If Firebase JobDispatcher is not
+   available on the device, it will use AlarmManager and BroadcastReceiver.
+
+=> So with WorkManager, you don't need to worry about backward compatibility. In addition to this,
+   it allows for defining constraints, which need to be met in order for the job to be run, 
+   such as defining network constraints, battery level, charging state and storage level.

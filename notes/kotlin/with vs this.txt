@@ -1,4 +1,8 @@
 The with() and the also() functions differ in 3 things.
-1.The receiver argument is provided as an explicit parameter T in the case of with(), whereas it is provided as an implicit receiver T in the case of also().
-The block argument is defined as a function that has an implicit receiver T in the case of with(), whereas it has an explicit argument T in the case of also().
-The with() function returns what is returned by executing its block argument, whereas the also() function returns the same object that was provided as its receiver.
+
+1.The receiver argument is provided as an explicit parameter T in the case of with(), 
+whereas it is provided as an implicit receiver T in the case of also().
+The block argument is defined as a function that has an implicit receiver T in the case of with(), 
+whereas it has an explicit argument T in the case of also().
+The with() function returns what is returned by executing its block argument, whereas the also() 
+function returns the same object that was provided as its receiver.

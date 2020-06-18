@@ -1,21 +1,27 @@
 package com.myapplication.rxjava.RxJavaOperators
 
+import com.myapplication.rxjava.Optional
 import io.reactivex.Observable
 import io.reactivex.ObservableEmitter
 import io.reactivex.Observer
+import io.reactivex.Single
 import io.reactivex.disposables.Disposable
+import io.reactivex.internal.observers.BiConsumerSingleObserver
 import kotlinx.coroutines.*
 import org.reactivestreams.Publisher
 import org.reactivestreams.Subscriber
 import java.util.concurrent.Callable
 import java.util.concurrent.FutureTask
 import java.util.concurrent.TimeUnit
+import java.util.function.BiConsumer
 
 
 fun main() {
 
     var test = RxJavaCreateOperators();
-    test.observableUsingJust()
+
+    test.singleObservable()
+//    test.observableUsingJust()
 //    test.observableUsingCreate()
 //    test.observableUsingDefer()
 //    test.observableUsingEmptyNeverThrow()
@@ -26,6 +32,7 @@ fun main() {
 
 class RxJavaCreateOperators {
     var arr = arrayOf<String>("Hi", "Hey", "Hello", "Bonzo")
+    var arrSingle : Array<String> ?= arrayOf<String>("Hi", "Hey", "Hello", "Bonzo")
     var arr1 = arrayOf<String>("Hi1", "Hey1", "Hello1", "Bonzo1")
 
     private fun getArray():Array<String> {
@@ -83,7 +90,33 @@ class RxJavaCreateOperators {
         }
     }
 
-    //    ********************JUST START***************************************
+    //    ********************SINGLE Observable START***************************************
+        fun singleObservable(){
+        arrSingle =null
+            Single.just(Optional(arrSingle))
+                    .doOnError { System.out.println(it) }
+                    .subscribe(object :io.reactivex.functions.BiConsumer<Optional<Array<String>>,Throwable>{
+                        override fun accept(t1: Optional<Array<String>>, t2: Throwable?) {
+                           if(t1.value != null){
+                               t1.value?.apply{
+                                   forEach { System.out.println(it) }
+                               }
+                            }else
+                               System.out.println("No item available")
+
+                            if(t2!=null){
+                                System.out.println(t2.message)
+                            }
+                        }
+                    })
+
+
+
+        }
+    //    ********************SINGLE End***************************************
+
+
+    //    ********************JUST Observable START***************************************
     fun observableUsingJust() {
         var observable = Observable.just(getArray())
         observable.subscribe({

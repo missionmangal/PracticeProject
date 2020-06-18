@@ -122,7 +122,7 @@ OPTION B->
 12. Component Dependency ->
 
 => If one component use an object which comes in the scope of other component
-   then we can have to declare that component in it's declaration as a 
+   then we  have to declare that component in it's declaration as a 
    dependency.
 => We can't add use the scope with annotating same annotation.
 => Like if 2 appcomponent and activityComponent both using @Singleton.
@@ -131,7 +131,7 @@ OPTION B->
 13. Factory ->
     
 => Factory is an interface which is a replacement of Builder.
-=> in Factory method we use create method instead of build.
+=> in Factory method we use "create" method instead of build.
 => Difference btw builder and factory is that we have to pass params in 
    create method but in Builder we provide methods to set pass values.
 

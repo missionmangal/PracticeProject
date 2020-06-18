@@ -97,7 +97,8 @@ Last —>
 
 Sample —>
 => emit the most recent item emitted by an Observable within periodic time intervals
-
+=> The Sample operator periodically looks at an Observable and emits whichever item
+   it has most recently emitted since the previous sampling.
 Skip —>
 => suppress the first n items emitted by an Observable
 
@@ -112,16 +113,48 @@ TakeLast —>
 
 
 
+***************************** Error Observables Operators ********************************++
+
+onError ->
+=> If any error/exception occur. 
+=> OnError method gets called and execution gets stopped.
+
+onErrorResumeNext ->
+=> In this case onErrorResumeNext method gets called. OnError method does not get called.
+=> In this case we get observer so we can call appropriate method like onNext()/onError()/onComplete()
+=> In this case it depends on user  that which method will be called
+
+OnErrorReturn ->
+=> By using this method we can prevent the normal flow. 
+=> after this function onCompleted function gets called(automatically).
+=> We sometimes need to produce the default item when an error or exception .
+   So onErrorReturn provides us a throwable and a lambda to return.
+
+
+
+
+
+
+
+
+
 ***************************** Combining Observables Operators ********************************
 
 And/Then/When — combine sets of items emitted by two or more Observables by means of Pattern and Plan intermediaries
 CombineLatest — when an item is emitted by either of two Observables, combine the latest item emitted by each Observable via a specified function and emit items based on the results of this function
 Join — combine items emitted by two Observables whenever an item from one Observable is emitted during a time window defined according to an item emitted by the other Observable
-Merge — combine multiple Observables into one by merging their emissions
+
+Merge —>
+=> combine multiple Observables into one by merging their emissions
+
 StartWith — emit a specified sequence of items before beginning to emit the items from the source Observable
 Switch — convert an Observable that emits Observables into a single Observable that emits the items emitted by the most-recently-emitted of those Observables
-Zip — combine the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function
 
+Zip —>
+=> combine the emissions of multiple Observables together via a specified function and emit single items for each combination based on the results of this function
+=> it combine sequencial item from more than one observables.
+=> if one observable iterates in 1 sec and another iterates in 2sec then it wait for both and then
+   emits after the apply function.
 ***************************** Error Handling Operators ********************************
 
 Catch — recover from an onError notification by continuing the sequence without error

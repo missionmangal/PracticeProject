@@ -1,4 +1,4 @@
-ReactiveX ->
+﻿ReactiveX ->
 => ReactiveX is a library for composing asynchronous and event-based programs 
    by using observable sequences. 
 
@@ -7,5 +7,50 @@ ReactiveX ->
    is a different animal. One main point of difference is that functional reactive programming 
    operates on values that change continuously over time, while ReactiveX operates on
    discrete values that are emitted over time.
+
+RxKotlin ->
+=> RxKotlin is a lightweight library that adds convenient extension functions to RxJava.
+=> We could interpret this as RxKotlin is specific for Kotlin with some additional classes base
+   on RxJava. View the source code menu from their GitHub and we will know it.
+
+RxAndroid ->
+=> Same as RxKotlin, RxAndroid adds the minimum classes to RxJava that make writing reactive 
+   components in Android applications easy and hassle-free.
+=> The most important thing of RxAndroid is that it offers Schedulers to manage the thread. 
+   Especially Schedulers.io() and AndroidSchedulers.mainThread() are widely used in android 
+   programming.
+
+
+RxJava ->
+
+=> RxJava is java implementation for Reactive programming (Event Based Programming) 
+   which in simple terms means that one part of your code would fire an Event
+   (a button click, successful api response etc) 
+=> while some other part of code would observe and react to that particular 
+   event asynchronously (updating view, handling the api result etc).
+
+*****RxJava vs RxAndroid****** ->
+*****************************************************************************
+=> RxAndroid is an extension of RxJava with few added classes related to 
+   Android. 
+=> To be specific there are schedulers introduced in RxAndroid which
+   plays a major role in supporting multi-thread operations in android. 
+=> Schedulers decide if the block of code should run on a worker thread or 
+   the main thread.
+   
+=> RxJava can be used in any Java development, not just in Android. For example,
+   RxJava can be used with Spring framework for backend development. 
+   
+=> RxAndroid is a library that contains what is needed to use RxJava in Android. 
+   So, if we want to use RxJava in Android Development, we have to add one more library, RxAndroid. 
+*****************************************************************************
+
+We are doing Kotlin, why we don’t use RxKotlin?
+Referenc -> https://proandroiddev.com/modern-android-development-with-kotlin-part-3-8721fb843d1b
+=> There is no need to write one more Rx library cause all Java code is supported in Kotlin world.
+   There is RxKotlin library, but that library is written on top of the RxJava. 
+   
+=> It just adds Kotlin features to the RxJava. You can use RxJava with Kotlin without 
+   using RxKotlin library. For the sake of simplicity, I will not use RxKotlin in this part.
    
    

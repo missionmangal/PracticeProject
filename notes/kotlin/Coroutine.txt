@@ -1,5 +1,13 @@
 Coroutine ->
 
+
+coroutine vs thread ->
+
+we can say that Coroutines and the threads both are multitasking. But the difference is that 
+threads are managed by the OS and coroutines by the users as it can execute a few lines of 
+function by taking advantage of the cooperation.
+
+
 Suspend fun ->
 => suspend fun is a function in which we can call delay() function and other functions which belong to
    coroutine.
@@ -23,11 +31,6 @@ viewModelScope ->
 => Scope within viewmodel
    
    
-coroutine vs thread ->
-
-we can say that Coroutines and the threads both are multitasking. But the difference is that 
-threads are managed by the OS and coroutines by the users as it can execute a few lines of 
-function by taking advantage of the cooperation.
 
 Launch vs Async ->
 

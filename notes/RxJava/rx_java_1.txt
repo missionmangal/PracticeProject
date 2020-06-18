@@ -1,32 +1,28 @@
 Reference -> https://medium.com/gradeup/simplest-rxjava-tutorial-for-android-262013ce3545
 Reference -> https://codingwithmitch.com/courses/rxjava-rxandroid-for-beginners/rxjava-operators/
 
-RxJava ->
-
-=> RxJava is java implementation for Reactive programming (Event Based Programming) 
-   which in simple terms means that one part of your code would fire an Event
-   (a button click, successful api response etc) 
-=> while some other part of code would observe and react to that particular 
-   event asynchronously (updating view, handling the api result etc).
-
-*****RxJava vs RxAndroid****** ->
-
-=> RxAndroid is an extension of RxJava with few added classes related to 
-   Android. 
-=> To be specific there are schedulers introduced in RxAndroid which
-   plays a major role in supporting multi-thread operations in android. 
-=> Schedulers decide if the block of code should run on a worker thread or 
-   the main thread.
 
 Observable ->
+=> Observable is a data stream that been observed by Observer and would emit data to Observer.
 
-=> If you remember RxJava is Event based programming so Observable is that part of the code which fires up the event.
-   You listen to observables for appropriate events.
 
-Observer ->
+Observer:->
+=> Observer is the other side of Observable. It receives the data emitted by Observable.
 
-=> The part of the code which listens and react to the event fired from the Observable. 
-   You need to override its interface methods for the Observer to work.
+
+Subscribe:->
+=> The bridge between Observable and Observe. There can be multiple Observers subscribed to a 
+single Observable.
+
+
+Operators:->
+=> Operators modifies the data which is emit by Observable. The Observer will get the data 
+which has changed.
+
+
+Schedulers:->
+=> Schedulers determines which thread should Observable emit the data and on which Observer 
+should receives the data.
 
 
 Losses by using AsyncTask ->
@@ -34,7 +30,8 @@ Losses by using AsyncTask ->
 1. Boilerplate code
 2. Multithreading was a nightmare
 3. More error prone
-4. Memory/context leaks are easily created is an inner class and thus holds an implicit reference to the outer class
+4. Memory/context leaks are easily created is an inner class and thus holds an implicit reference
+   to the outer class
 5. No error handling
 
 Benefits -> 

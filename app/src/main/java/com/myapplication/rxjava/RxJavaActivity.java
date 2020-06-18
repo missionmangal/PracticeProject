@@ -17,7 +17,6 @@ import androidx.core.content.ContextCompat;
 
 import com.myapplication.R;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
@@ -29,7 +28,6 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import rx.functions.Func1;
 
 public class RxJavaActivity extends AppCompatActivity {
 
