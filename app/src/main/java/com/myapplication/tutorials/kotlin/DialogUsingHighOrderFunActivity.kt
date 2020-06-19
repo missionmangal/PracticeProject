@@ -1,9 +1,12 @@
 package com.myapplication.tutorials.kotlin
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.myapplication.R
+import com.myapplication.tutorials.kotlin.avinash.PracticeActivity
 import com.myapplication.util.UtilDialog
 import kotlinx.android.synthetic.main.activity_dialog_using_high_order_fun.*
 
@@ -40,6 +43,10 @@ class DialogUsingHighOrderFunActivity : AppCompatActivity() ,UtilDialog.Companio
     override fun onClick(x: Int, y: Int, dialog: DialogInterface?): Int {
         dialog?.dismiss()
         return x + y
+    }
+
+    fun goToAvinashWork(view: View) {
+        startActivity(Intent(this@DialogUsingHighOrderFunActivity,PracticeActivity::class.java))
     }
 
 

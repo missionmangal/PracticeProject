@@ -10,7 +10,6 @@ class UtilDialog {
     companion object{
 
         fun createDialog(context: Context, title:String, message:String , onClick:(Int,Int,DialogInterface?)->Int)
-
         {
             AlertDialog.Builder(context).setTitle(title)
                     .setMessage(message)
@@ -29,7 +28,6 @@ class UtilDialog {
                     .setPositiveButton("OK", object :DialogInterface.OnClickListener{
                         override fun onClick(dialog: DialogInterface?, which: Int) {
                            var result= dialogAction.onClick(10,20,dialog)
-
                             System.out.println(result)
                         }
 

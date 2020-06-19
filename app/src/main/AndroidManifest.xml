@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".tutorials.kotlin.avinash.PracticeActivity"></activity>
         <activity android:name=".tutorials.kotlin.DialogUsingHighOrderFunActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".tutorials.kotlin.ExtensionFunActivity">
-
-        </activity>
+        <activity android:name=".tutorials.kotlin.ExtensionFunActivity"></activity>
         <activity android:name=".service_2.messanger.Messangerctivity2" />
         <activity android:name=".coroutine.CoroutineActivity2" />
         <activity android:name=".coroutine.CoroutineSharedValue" />
@@ -39,7 +38,7 @@
         <activity android:name=".espresso_testing.LoginActivity" />
         <activity android:name=".coroutine.ChannelActivity" />
         <activity android:name=".coroutine.CoroutineActivity" />
-        <activity android:name=".rxjava.RxJavaActivity"></activity>
+        <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".rxjava_retrofit.RxJavaRetrofitActivity" />
         <activity android:name=".service_broadcast.BroadcastServiceActivity" />
         <activity android:name=".service_messenger.MessengerServiceActivity" />
