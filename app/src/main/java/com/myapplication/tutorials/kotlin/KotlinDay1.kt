@@ -1,7 +1,5 @@
 package com.myapplication.tutorials.kotlin
 
-import com.myapplication.setImage
-
 fun main() {
 
     var kotlinDay1 = KotlinDay1(15,24)
