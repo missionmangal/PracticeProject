@@ -1,4 +1,4 @@
-package com.myapplication.tutorials.kotlin.avinash.src.chap08_lambdas_sam_constructors;
+package com.myapplication.tutorials.kotlin.avinash.tutorials.chap08_lambdas_sam_constructors;
 
 public class View {
     interface OnClickListener {

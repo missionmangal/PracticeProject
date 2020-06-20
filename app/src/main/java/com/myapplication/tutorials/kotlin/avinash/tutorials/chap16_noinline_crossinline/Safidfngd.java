@@ -1,4 +1,4 @@
-package com.myapplication.tutorials.kotlin.avinash.src.chap16_noinline_crossinline;
+package com.myapplication.tutorials.kotlin.avinash.tutorials.chap16_noinline_crossinline;
 
 import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;

@@ -5,7 +5,7 @@ fun main(args: Array<String>) {
     val runnable: Runnable = Runnable { print("I am a runnable") }
 
     // Returning a specific type of functional interface
-    fun createOnClickListener(): View.OnClickListener {
-        return View.OnClickListener { v -> print("I am clicked") }
-    }
+//    fun createOnClickListener(): View.OnClickListener {
+//        return View.OnClickListener { v -> print("I am clicked") }
+//    }
 }

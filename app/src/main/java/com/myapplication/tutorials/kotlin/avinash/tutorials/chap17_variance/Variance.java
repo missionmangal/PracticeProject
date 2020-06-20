@@ -1,4 +1,4 @@
-package com.myapplication.tutorials.kotlin.avinash.src.chap17_variance;
+package com.myapplication.tutorials.kotlin.avinash.tutorials.chap17_variance;
 
 public class Variance {
 

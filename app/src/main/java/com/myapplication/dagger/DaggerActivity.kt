@@ -17,6 +17,7 @@ class DaggerActivity : AppCompatActivity() {
     lateinit var car1 :Car
     @Inject
     lateinit var car2 :Car
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dagger)

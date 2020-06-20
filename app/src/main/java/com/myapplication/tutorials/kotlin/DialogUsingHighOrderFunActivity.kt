@@ -1,12 +1,12 @@
 package com.myapplication.tutorials.kotlin
 
 import android.content.DialogInterface
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.myapplication.R
 import com.myapplication.tutorials.kotlin.avinash.PracticeActivity
+import com.myapplication.tutorials.kotlin.avinash.extensions.startAct
 import com.myapplication.util.UtilDialog
 import kotlinx.android.synthetic.main.activity_dialog_using_high_order_fun.*
 
@@ -46,7 +46,14 @@ class DialogUsingHighOrderFunActivity : AppCompatActivity() ,UtilDialog.Companio
     }
 
     fun goToAvinashWork(view: View) {
-        startActivity(Intent(this@DialogUsingHighOrderFunActivity,PracticeActivity::class.java))
+
+        var bundle = Bundle()
+        bundle.putString("id","500")
+
+        startAct(PracticeActivity::class.java)
+
+        startAct(PracticeActivity::class.java,"param",bundle)
+
     }
 
 

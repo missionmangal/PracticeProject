@@ -8,7 +8,7 @@ class SafeCall {
 
         val age = john?.age
         // Uncomment to experience compile error
-        //val offsetAge = age + 1 /* compile error */
+//        val offsetAge = age + 1 /* compile error */
     }
 
     fun elvisDefault() {
