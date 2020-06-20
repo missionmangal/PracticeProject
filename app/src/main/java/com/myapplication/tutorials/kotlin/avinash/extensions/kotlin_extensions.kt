@@ -62,6 +62,12 @@ fun Double.plus(someValue:Double) : Double{
 fun Double.minus(someValue:Double) : Double{
     return this-someValue
 }
+fun Double.mul(someValue:Double) : Double{
+    return this*someValue
+}
+fun Double.percent(howMuchPercent:Double) : Double{
+    return (this/100.0)*howMuchPercent
+}
 
 
 
