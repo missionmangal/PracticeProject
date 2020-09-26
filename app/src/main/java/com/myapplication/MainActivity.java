@@ -49,16 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 callApiFailed();
             }
         });
-        Contact con;
-        Bitmap icon = BitmapFactory.decodeResource(this.getResources(),
-                R.drawable.ic_launcher_foreground);
-        Long maxMemory = Runtime.getRuntime().maxMemory();
-        System.out.println(maxMemory);
-        int[] matrix = new int[(int) (maxMemory + 1)];
-        for(int i = 0; i < matrix.length; ++i) {
-//            matrix[i] = i + 1;
-            System.out.println(i);
-        }
+
+
+
     }
 
 

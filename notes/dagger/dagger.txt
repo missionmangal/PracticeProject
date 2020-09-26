@@ -124,7 +124,7 @@ OPTION B->
 => If one component use an object which comes in the scope of other component
    then we  have to declare that component in it's declaration as a 
    dependency.
-=> We can't add use the scope with annotating same annotation.
+=> We can't use the scope with annotating same annotation.
 => Like if 2 appcomponent and activityComponent both using @Singleton.
 => We need to create a new scope like @PerActivity scope for Activity  
 

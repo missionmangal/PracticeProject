@@ -171,20 +171,12 @@ class CoroutineActivity : AppCompatActivity() {
         var apiRxJava = RetrofiGenerator.getRequestApi();
         GlobalScope.launch(Dispatchers.IO) {
             var response = apiRxJava.getPosts().await()
-//          var respons = async{apiRxJava.getPosts()}
-//          var respons = async{doNetworkCall1()}
-//          var response =  respons.await()
-//            mBinding.tvText.text = response.toString()
+
             if(response.isSuccessful) {
                 mBinding.tvText.text = response.body().toString()
                 Log.d("aaaaaaaa", response.body().toString())
             }
-//            if(response.isSuccessful)
-//            for(p in response.body()!! )
-//            {
-//                Log.d("aaaaaaaa",p.body)
-//            }
-//            Toast.makeText(this@CoroutineActivity,response.message(),Toast.LENGTH_LONG).show()
+
         }
     }
 

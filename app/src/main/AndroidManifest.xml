@@ -13,15 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".tutorials.kotlin.avinash.PracticeActivity"></activity>
-        <activity android:name=".tutorials.kotlin.DialogUsingHighOrderFunActivity">
+        <activity android:name=".coroutine.ProducerConsumerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".tutorials.kotlin.ExtensionFunActivity"></activity>
+        <activity android:name=".coroutine.DispatcherActivity">
+        </activity>
+        <activity android:name=".coroutine.CoroutineScopeActivity"></activity>
+        <activity android:name=".tutorials.kotlin.avinash.PracticeActivity" />
+        <activity android:name=".tutorials.kotlin.DialogUsingHighOrderFunActivity" />
+        <activity android:name=".tutorials.kotlin.ExtensionFunActivity" />
         <activity android:name=".service_2.messanger.Messangerctivity2" />
         <activity android:name=".coroutine.CoroutineActivity2" />
         <activity android:name=".coroutine.CoroutineSharedValue" />

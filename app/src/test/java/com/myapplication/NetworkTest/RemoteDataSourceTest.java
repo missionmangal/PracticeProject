@@ -43,7 +43,7 @@ public class RemoteDataSourceTest {
         mResultList.add(topics);
         mResultList.add(topicsTwo);
         networkCall = new NetworkCall();
-//        mMockWebserver = new MockWebServer();
+        mMockWebserver = new MockWebServer();
 
 //        mSubscriber = new TestSubscriber<>();
     }
@@ -64,6 +64,9 @@ public class RemoteDataSourceTest {
 //        mSubscriber.assertNoErrors();
 //        mSubscriber.assertCompleted();
     }
+
+
+
     @Test
     public void serverCallSuccessful(){
         String url = "https://guessthebeach.herokuapp.com/api/";
@@ -97,7 +100,6 @@ public class RemoteDataSourceTest {
         networkCall.setRequestTag(IApi.TOPIC_TAG);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(IApi.BASE_URL)
-//                .baseUrl(IApi.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         IApi api = retrofit.create(IApi.class);

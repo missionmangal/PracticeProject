@@ -8,9 +8,30 @@ Coroutine Scopes ->
 	it works inside the viewmodel scope.
 	if viewmodel gets destroyed coroutine will be cancelled.
 	
- 
+
+
+
+
+3. CoroutineScope ->
+=> We manage the lifecycles of our coroutines by creating an instance of CoroutineScope tied to
+   the lifecycle of our activity. A CoroutineScope instance can be created by the CoroutineScope()
+   or MainScope() factory functions. The former creates a general-purpose scope, while the latter
+   creates a scope for UI applications and uses Dispatchers.Main as the default dispatcher:
+
+
 2. MainScope ->
+=> MainScope is just a scope.
+=> we can create an object of MainScope and then we can call cancel() method 
 
+4. coroutineScope ->
+=> it's an suspend funcion can only be called inside an suspend function or launch{}
 
+=> runBlocking and coroutineScope may look similar because they both wait for their body and all
+   its children to complete. The main difference is that the runBlocking method blocks the current
+   thread for waiting, while coroutineScope just suspends, releasing the underlying thread for
+   other usages. Because of that difference, runBlocking is a regular function and coroutineScope
+   is a suspending function.
 
-3. CoroutineScope -> 
+=> coroutineScpe can only be called from any CoroutineBlock. It can't be run on Thread directly.
+=> coroutinScope blocks that coroutine on which it's running.
+=> runBlocking blocks the thread if it's running directly on Thread.

@@ -6,6 +6,7 @@ import com.myapplication.RetryApi.Retry;
 
 import java.util.List;
 
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -32,6 +33,12 @@ public interface IApi {
 
     @GET("topics/")
     Call<BaseResponse<Topics>> getTopicsRx();
+
+    @GET("topics/")
+    Call<List<Topics>> getTopicsTest1();
+    @GET("topics/")
+    Single<BaseResponse<Topics>> getTopicsTest2();
+
     @Retry
     @GET("topics/")
     Call<List<Topics>> getTopicsRetry();

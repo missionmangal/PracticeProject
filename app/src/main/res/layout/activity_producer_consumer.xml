@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".coroutine.ProducerConsumerActivity">
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Start"/>
+    <TextView
+        android:id="@+id/tvProduce"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Item Produced"
+        android:gravity="center"
+        android:textSize="26sp"/>
+    <TextView
+        android:id="@+id/tvProducerWaiting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Producer Waiting..."
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="26sp"/>
+    <TextView
+        android:id="@+id/tvConsume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Item Consumed"
+        android:gravity="center"
+        android:textSize="26sp"/>
+    <TextView
+        android:id="@+id/tvConsumerWaiting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Consumer Waiting..."
+        android:gravity="center"
+        android:visibility="gone"
+        android:textSize="26sp"/>
+</LinearLayout>

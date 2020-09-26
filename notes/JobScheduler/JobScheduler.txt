@@ -6,3 +6,14 @@ JobScheduler vs WorkManager ->
 => So with WorkManager, you don't need to worry about backward compatibility. In addition to this,
    it allows for defining constraints, which need to be met in order for the job to be run, 
    such as defining network constraints, battery level, charging state and storage level.
+   
+=> JobScheduler works from API 21 and WorkManager works from API 14
+
+=> WorkManager is intended for tasks that require a guarantee that the system will run them
+   even if the app exits.
+   
+=> To ensure compatibility back to API level 14, WorkManager chooses an appropriate way to
+   schedule a background task depending on the device API level. WorkManager might use
+   JobScheduler or a combination of BroadcastReceiver and AlarmManager.
+   if api level 23+ it'll use JobScheduler
+   else it'll use AlarmManager
