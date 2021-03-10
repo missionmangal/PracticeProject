@@ -2,6 +2,7 @@ package com.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import com.myapplication.Network.BaseResponse;
 import com.myapplication.Network.IApi;
 import com.myapplication.Network.NetworkCall;
 import com.myapplication.Network.ServiceCallBack;
+import com.myapplication.launchMode.singleInstance.SingleInstanceActivity;
 
 import java.util.List;
 
@@ -38,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 count=0;
-                callApiSuccess();
+                Intent intent = new Intent(MainActivity.this , SingleInstanceActivity.class);
+                startActivity(intent);
+//                callApiSuccess();
 
             }
         });

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,17 +13,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".coroutine.ProducerConsumerActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".coroutine.DispatcherActivity">
-        </activity>
-        <activity android:name=".coroutine.CoroutineScopeActivity"></activity>
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity
+            android:name=".launchMode.singleInstance.SingleInstanceActivity"
+            android:launchMode="singleInstance"></activity>
+        <activity android:name=".coroutine.ContextDispatcherCoroutineActivity"></activity>
+        <activity android:name=".alarm.AlarmActivity" />
+        <activity android:name=".coroutine.FanInFanOutActivity" />
+        <activity android:name=".coroutine.ProducerConsumerActivity" />
+        <activity android:name=".coroutine.SharedMutableCoroutineActivity" />
+        <activity android:name=".coroutine.DispatcherActivity" />
+        <activity android:name=".coroutine.CoroutineScopeActivity" />
         <activity android:name=".tutorials.kotlin.avinash.PracticeActivity" />
         <activity android:name=".tutorials.kotlin.DialogUsingHighOrderFunActivity" />
         <activity android:name=".tutorials.kotlin.ExtensionFunActivity" />
@@ -45,7 +47,16 @@
         <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".rxjava_retrofit.RxJavaRetrofitActivity" />
         <activity android:name=".service_broadcast.BroadcastServiceActivity" />
-        <activity android:name=".service_messenger.MessengerServiceActivity" />
+        <activity android:name=".service_messenger.MessengerServiceActivity">
+
+        </activity>
+        <activity android:name=".service_3.binder.BinderServiceActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".service_communication.ServiceActivity" />
         <activity android:name=".MainActivity" />
 
@@ -56,10 +67,13 @@
             android:name=".service_2.messanger.MessengerService2"
             android:exported="true" />
         <service android:name=".service_communication.LocalService" />
+        <service android:name=".service_3.binder.LocalService" />
         <service android:name=".service_2.binder.ServiceBinder" />
         <service android:name=".service_broadcast.BroadcastService" />
 
         <uses-library android:name="android.test.runner" />
+
+        <receiver android:name=".alarm.ReminderBroadcast" />
     </application>
 
 </manifest>

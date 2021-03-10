@@ -1,5 +1,6 @@
 package com.myapplication.service_messenger
 
+import android.annotation.SuppressLint
 import android.app.Service
 import android.content.Intent
 import android.os.Handler
@@ -11,12 +12,13 @@ class MessengerService : Service() {
     val GET_COUNT =0
     var mBinder = Messenger(RequestHandler())
 
+    @SuppressLint("HandlerLeak")
     inner class RequestHandler : Handler() {
         override fun handleMessage(msg: Message) {
             when(msg.what){
                 0 -> {
-                    var message = Message.obtain(null, GET_COUNT)
-                    var randomNo = getRandomNumber()
+                    val message = Message.obtain(null, GET_COUNT)
+                    val randomNo = getRandomNumber()
                     message.arg1 = randomNo
                     msg.replyTo.send(message)
                 }

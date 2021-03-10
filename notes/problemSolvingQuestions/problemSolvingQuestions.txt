@@ -1,0 +1,31 @@
+https://beginnersbook.com/2015/02/simple-c-programs/
+1. Hello World Program in C
+2. C program to check whether the given number is positive or negative
+3. Reverse an input number using recursion
+4. Program to find greatest of three numbers
+5. C Program to print Fibonacci series in a given range
+6. C Program to find factorial of a given number
+7. Find Prime numbers in a given range
+8. C Program to check if given number is Armstrong or not
+9. C Program to check if given number is palindrome or not
+10. C program to display palindrome numbers in a given range
+11. C Program to check if number is odd or even
+12. C Program to find out the ASCII value of a character
+13. C Program to find the size of int, float, double and char
+14. C Program to check whether an alphabet is vowel or consonant
+15. C Program to check leap year
+16. C Program to find sum of first n natural numbers
+
+String Programs
+1. Program to convert string from upper case to lower case
+2. Program to convert string from lower case to upper case
+3. Sort a set of strings in ascending alphabetical order
+4. Find length of a string without using strlen()
+5. String concatenation without using strcat
+6. Reverse a String using recursion
+
+Array Programs
+1. Program to sort array in ascending order
+2. Find largest element of given array
+3. C program to find sum of array elements
+4. C Program to find number of elements in an array

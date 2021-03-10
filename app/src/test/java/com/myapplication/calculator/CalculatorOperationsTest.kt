@@ -18,26 +18,26 @@ class CalculatorOperationsTest {
 
     @Test
     fun add() {
-        var result = calculator.add(10,20)
+        val result = calculator.add(10,20)
         assertThat(result, `is`(30))
     }
 
     @Test
     fun subtraction() {
-        var result = calculator.add(10,20)
+        val result = calculator.add(10,20)
         assertThat(result, `is`(-10))
     }
 
     @Test
     fun multiply() {
-        var result = calculator.add(10,20)
+        val result = calculator.add(10,20)
         assertThat(result, `is`(equalTo(200)))
     }
 
     @Test
     fun divide() {
 
-        var result = calculator.add(10,20)
+        val result = calculator.add(10,20)
         assertThat(result, `is`(equalTo(0)))
     }
 }

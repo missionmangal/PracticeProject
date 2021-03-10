@@ -28,7 +28,7 @@ LifecycleScope ->
    destroyed when the activity is destroyed.
    
 viewModelScope ->
-=> Scope within viewmodel
+=> Scope within viewModel
    
    
 

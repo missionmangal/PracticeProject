@@ -41,9 +41,7 @@ class ServiceBinder : Service() {
         for(i in 1..25) {
             if(!isRunning)
                 break
-
                 delay(2000)
-
                 var random =Random.nextInt(100,200)
                 callBack?.sendResult("$str $random")
                 println("$str $random")

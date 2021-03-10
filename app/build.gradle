@@ -42,6 +42,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     implementation 'androidx.fragment:fragment-ktx:1.2.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 //    Testign Start
     testImplementation 'junit:junit:4.12'
 

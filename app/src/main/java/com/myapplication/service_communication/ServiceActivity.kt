@@ -4,14 +4,13 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
-import android.renderscript.ScriptGroup
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.myapplication.R
 
 class ServiceActivity : AppCompatActivity() , OnClickListener{

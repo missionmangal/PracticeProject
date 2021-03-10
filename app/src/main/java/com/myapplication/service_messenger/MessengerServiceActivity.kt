@@ -1,5 +1,6 @@
 package com.myapplication.service_messenger
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -17,31 +18,32 @@ class MessengerServiceActivity : AppCompatActivity() {
     var btnRandomNo: Button?=null
     var requestMessenger : Messenger?= null
     var receiveMessenger : Messenger?= null
-    var isBoundservice = false;
+    var isBoundService = false;
     var GET_RANDOM_NO =0;
     var serviceConnection = object :ServiceConnection{
         override fun onServiceDisconnected(name: ComponentName?) {
             Toast.makeText(this@MessengerServiceActivity,"Service disconnected" , Toast.LENGTH_LONG).show()
             receiveMessenger = null
             requestMessenger = null
-            isBoundservice = false
+            isBoundService = false
         }
 
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
             Toast.makeText(this@MessengerServiceActivity,"Service connected" , Toast.LENGTH_LONG).show()
             requestMessenger = Messenger(service)
             receiveMessenger = Messenger(ReceiveHandler())
-            isBoundservice = true
+            isBoundService = true
         }
     }
 
 //    Handler
+   @SuppressLint("HandlerLeak")
    inner class ReceiveHandler : Handler(){
 
     override fun handleMessage(msg: Message) {
         when(msg.what){
             0-> {
-                var randomNo = msg.arg1
+                val randomNo = msg.arg1
                 Toast.makeText(this@MessengerServiceActivity," random no is $randomNo",Toast.LENGTH_LONG).show()
             }
         }
@@ -55,7 +57,7 @@ class MessengerServiceActivity : AppCompatActivity() {
         btnStart = findViewById(R.id.btn_start)
         btnStop = findViewById(R.id.btn_stop)
         btnRandomNo = findViewById(R.id.btn_random_no)
-        btnStart?.setOnClickListener({
+        val onClickListener = btnStart?.setOnClickListener({
             connectService()
         })
         btnStop?.setOnClickListener({disconnectService()})
@@ -63,28 +65,28 @@ class MessengerServiceActivity : AppCompatActivity() {
     }
 
     private fun disconnectService() {
-        if(isBoundservice)
+        if(isBoundService)
             unbindService(serviceConnection)
         else
             Toast.makeText(this@MessengerServiceActivity,"Servie is not connected",Toast.LENGTH_LONG).show()
 
     }
 
-    fun connectService(){
+    private fun connectService(){
 
-        if(!isBoundservice) {
+        if(!isBoundService) {
             var intent = Intent(this, MessengerService::class.java)
             intent.setPackage("com.myapplication.service_messenger")
             bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
         }else{
-            Toast.makeText(this@MessengerServiceActivity,"Servie is not connected",Toast.LENGTH_LONG).show()
+            Toast.makeText(this@MessengerServiceActivity,"Servie is already connected",Toast.LENGTH_LONG).show()
 
         }
     }
 
-    fun fetchRandomNo(){
-        if(isBoundservice){
-            var message = Message.obtain(null,GET_RANDOM_NO)
+    private fun fetchRandomNo(){
+        if(isBoundService){
+            val message = Message.obtain(null,GET_RANDOM_NO)
             message.replyTo = receiveMessenger
             try{
                 requestMessenger?.send(message)
@@ -97,7 +99,7 @@ class MessengerServiceActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-        if(isBoundservice)
+        if(isBoundService)
         unbindService(serviceConnection)
         super.onDestroy()
     }

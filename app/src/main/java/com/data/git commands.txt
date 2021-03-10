@@ -1,0 +1,131 @@
+Git commands 
+
+Add->
+
+git add fileName
+git add -A
+
+Log ->
+
+git log
+git log --oneline
+git log --stat
+git log --patch -> to see the changes between content
+git log --graph --all --decorate --oneline
+
+Remove ->
+
+git rm file1.txt
+git rm --cached file2.txt -> remove file from history but not from system
+
+Diff ->
+to check the changes which was done
+git diff  
+git diff -stat
+
+If we want to commit all our changes, we can use this shorthand,
+which will automatically run a git add on every modified file to our
+index, then commit the whole thing:
+
+$ git commit -a -m ‘committing all  
+
+Searching Git-> 
+
+For example, if we wanted to search for the string ‘log_syslog’ in versions 1.0 
+and 1.5.3.8 of the Git source code in the C files only, we can
+find that very easily.
+$ git grep -n ‘log_syslog’ v1.5.3.8 v1.0.0 -- *.c
+
+
+Branch ->
+git create on remote 
+git push --set-upstream origin 'branch-name'
+Switching Branch
+git branch newfunc; git checkout newfunc
+
+$ git checkout -b newfunc 
+
+Merging ->
+git merge 'branch name'
+git merge --squaze 'branch name' -> (only last commit will appear on log)
+
+
+REbase -> Recreats the project history and show only last commit on the top
+
+git rebase master
+
+Undoing a Merge ->
+Assume we have gone through some massive merge because some
+-
+one on your team hasn’t committed in a while, or you have a branch
+that was created some time ago but hasn’t been rebasing and you
+want to pull it in. So you try to git merge old_branch it and you get
+conflict after conflict and it is just too much trouble to deal with and
+you just want to undo it all.
+This is where git reset comes in. To reset your working directory and
+index back to what it was before you tried the merge, simply run:
+
+
+$ git reset ->
+
+git reset --soft -> 
+=> remove the commit but don't remove the local changes
+=> in this case not need to add files we can direct commit the changes.
+git reset ->
+=> remove the commit but don't remove the local changes 
+=> in this case need to add files we can't direct commit the changes.
+
+git reset --hard -> remove the commit with the local changes
+git reset --hard HEAD^
+git push origin -f (to remove commits from remote)
+
+git branch 
+
+• git merge 
+
+• git reset 
+
+• git revert
+
+
+
+Stash -> 
+
+git stash
+Saving changes temperarory on git later we can get by using "git stash apply 'index'"
+git stash clear
+
+Tag ->  To add tag after particular commit to save stable versions. It's like versioning or release.
+git tag v1.0
+git push origin v1.0
+git push origin --tags (to push all the tags on remote)
+git tag -d v1.0
+git tag --delete v1.0
+
+git push origin -d v1.0
+git push origin --delete v1.0
+git push origin :v1.0
+
+git checkout -b 'branch name' 'tag name' 
+
+
+error: could not apply dc5c8d0... f1
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply dc5c8d0... f1
+Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+
+
+soft hard mixed reset
+It's not a Git error message, it's the editor as git uses your default editor.
+
+To solve this:
+
+press "i" (i for insert)
+write your merge message
+press "esc" (escape)
+write ":wq" (write & quit)
+then press enter

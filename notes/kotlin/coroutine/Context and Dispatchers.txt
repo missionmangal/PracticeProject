@@ -1,0 +1,18 @@
+CoroutineContext ->
+=> Coroutines always execute in some context represented by a value of the CoroutineContext type,
+   defined in the Kotlin standard library.
+   
+Dispatchers and threads ->
+=> The coroutine context includes a coroutine dispatcher (see CoroutineDispatcher) that determines
+   what thread or threads the corresponding coroutine uses for its execution. The coroutine 
+   dispatcher can confine coroutine execution to a specific thread, dispatch it to a thread pool, 
+   or let it run unconfined.
+   
+=> All coroutine builders like launch and async accept an optional CoroutineContext parameter that
+   can be used to explicitly specify the dispatcher for the new coroutine and other context elements.
+   
+=> The Dispatchers.Unconfined coroutine dispatcher starts a coroutine in the caller thread, but only
+   until the first suspension point. After suspension it resumes the coroutine in the thread that
+   is fully determined by the suspending function that was invoked. The unconfined dispatcher is
+   appropriate for coroutines which neither consume CPU time nor update any shared data (like UI)
+   confined to a specific thread.

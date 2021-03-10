@@ -1,0 +1,22 @@
+https://www.geeksforgeeks.org/java-program-to-print-all-duplicate-characters-in-a-string/
+String Questions Recommended Posts:
+Remove all duplicate adjacent characters from a string using Stack
+Lexicographic rank of a string with duplicate characters
+Count the nodes of a tree whose weighted string does not contain any duplicate characters
+Minimum number of operations to move all uppercase characters before all lower case characters
+Min flips of continuous characters to make all characters same in a string
+Program to duplicate Vowels in String
+Print all distinct characters of a string in order (3 Methods)
+Print all positions of a given string having count of smaller characters equal on both sides
+Program to print characters present at prime indexes in a given string
+Replace minimal number of characters to make all characters pair wise distinct
+Minimum characters to be replaced to make frequency of all characters same
+Different Ways to Print First K Characters of the String in Java
+String with k distinct characters and no same characters adjacent
+Permutation of a string with maximum number of characters greater than its adjacent characters
+Rearrange the characters of the string such that no two adjacent characters are consecutive English alphabets
+Count of ungrouped characters after dividing a string into K groups of distinct characters
+Minimum cost to remove the spaces between characters of a String by rearranging the characters
+Java Program to print all permutations of a given string
+Python program to check if a string contains all unique characters
+Program to toggle all characters in a string

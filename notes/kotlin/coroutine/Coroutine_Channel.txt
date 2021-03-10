@@ -32,3 +32,9 @@ Channel capacity policy->
 => The element in the conflated channel will be replaced by the lastest element. 
    So the channel.send() will never be suspended and 
    the channel.receive() will always get the lastest element.
+
+Fan Out ->
+=> Multiple coroutines may receive from the same channel, distributing work between themselves.
+
+Fan In ->
+=> Multiple coroutines may send to the same channel.
