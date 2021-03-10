@@ -23,8 +23,9 @@ class EndGameFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_end_game, container, false)
-        return mBinding?.root
+//        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_end_game, container, false)
+//        return mBinding?.root
+        return null
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

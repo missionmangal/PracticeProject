@@ -8,7 +8,7 @@ package com.myapplication.threads;
 * */
 public class SynchronizationPractice3 {
     public static void main(String[] args) {
-        Runnable2 runnable1 = new Runnable2();
+        Runnable3 runnable1 = new Runnable3();
         Thread thread1 = new Thread(runnable1, "Thread 1");
         Thread thread2 = new Thread(runnable1, "Thread 2");
         thread1.start();

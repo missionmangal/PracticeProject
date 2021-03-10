@@ -15,10 +15,18 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".leakedActivity.LeakedActivity2"></activity>
+        <activity android:name=".leakedActivity.LeakedActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".launchMode.singleInstance.SingleInstanceActivity"
-            android:launchMode="singleInstance"></activity>
-        <activity android:name=".coroutine.ContextDispatcherCoroutineActivity"></activity>
+            android:launchMode="singleInstance" />
+        <activity android:name=".coroutine.ContextDispatcherCoroutineActivity" />
         <activity android:name=".alarm.AlarmActivity" />
         <activity android:name=".coroutine.FanInFanOutActivity" />
         <activity android:name=".coroutine.ProducerConsumerActivity" />
@@ -47,15 +55,9 @@
         <activity android:name=".rxjava.RxJavaActivity" />
         <activity android:name=".rxjava_retrofit.RxJavaRetrofitActivity" />
         <activity android:name=".service_broadcast.BroadcastServiceActivity" />
-        <activity android:name=".service_messenger.MessengerServiceActivity">
-
-        </activity>
+        <activity android:name=".service_messenger.MessengerServiceActivity" />
         <activity android:name=".service_3.binder.BinderServiceActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".service_communication.ServiceActivity" />
         <activity android:name=".MainActivity" />
