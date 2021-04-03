@@ -1,13 +1,11 @@
 package com.myapplication.service_2.binder
 
-import android.app.IntentService
 import android.app.Service
 import android.content.Intent
 import android.os.Binder
 import android.os.IBinder
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 

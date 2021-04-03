@@ -15,14 +15,22 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".leakedActivity.LeakedActivity2"></activity>
-        <activity android:name=".leakedActivity.LeakedActivity" >
+        <activity android:name=".looperHandlerThread4.SimpleUIThreadActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+        <activity android:name=".serviceBinder.ServiceBinderActivity2">
+
+        </activity>
+        <activity android:name=".serviceMessenger2.MessengerActivity2"></activity>
+        <activity android:name=".looperHandlerThread3.LooperActivity3" />
+        <activity android:name=".looperHandlerThread2.LooperActivity2" />
+        <activity android:name=".customViews.CustomViewActivity" />
+        <activity android:name=".leakedActivity.LeakedActivity2" />
+        <activity android:name=".leakedActivity.LeakedActivity" />
         <activity
             android:name=".launchMode.singleInstance.SingleInstanceActivity"
             android:launchMode="singleInstance" />
@@ -45,8 +53,8 @@
         <activity android:name=".live_data.LivedataActivity" />
         <activity android:name=".rxjava_again.RxJavaAgainActivity" />
         <activity android:name=".dagger.DaggerActivity" />
-        <activity android:name=".looper_thread.LooperActivity" />
-        <activity android:name=".looper_thread.LooperActivityJava" />
+        <activity android:name=".looperHandlerThread.LooperActivity" />
+        <activity android:name=".looperHandlerThread.LooperActivityJava" />
         <activity android:name=".espresso_testing.ListActivity" />
         <activity android:name=".navigation_component.NavigationActivity" />
         <activity android:name=".espresso_testing.LoginActivity" />
@@ -56,9 +64,7 @@
         <activity android:name=".rxjava_retrofit.RxJavaRetrofitActivity" />
         <activity android:name=".service_broadcast.BroadcastServiceActivity" />
         <activity android:name=".service_messenger.MessengerServiceActivity" />
-        <activity android:name=".service_3.binder.BinderServiceActivity">
-
-        </activity>
+        <activity android:name=".service_3.binder.BinderServiceActivity" />
         <activity android:name=".service_communication.ServiceActivity" />
         <activity android:name=".MainActivity" />
 
@@ -72,6 +78,8 @@
         <service android:name=".service_3.binder.LocalService" />
         <service android:name=".service_2.binder.ServiceBinder" />
         <service android:name=".service_broadcast.BroadcastService" />
+        <service android:name=".serviceMessenger2.MessengerService2" />
+        <service android:name=".serviceBinder.ServiceBinder2" />
 
         <uses-library android:name="android.test.runner" />
 

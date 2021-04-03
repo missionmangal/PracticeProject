@@ -57,9 +57,9 @@ class MessengerServiceActivity : AppCompatActivity() {
         btnStart = findViewById(R.id.btn_start)
         btnStop = findViewById(R.id.btn_stop)
         btnRandomNo = findViewById(R.id.btn_random_no)
-        val onClickListener = btnStart?.setOnClickListener({
+        val onClickListener = this.btnStart?.setOnClickListener {
             connectService()
-        })
+        }
         btnStop?.setOnClickListener({disconnectService()})
         btnRandomNo?.setOnClickListener({fetchRandomNo()})
     }

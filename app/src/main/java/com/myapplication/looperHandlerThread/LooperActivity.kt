@@ -1,22 +1,23 @@
-package com.myapplication.looper_thread
+package com.myapplication.looperHandlerThread
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.os.Message
+import androidx.appcompat.app.AppCompatActivity
 import com.myapplication.R
 import kotlinx.android.synthetic.main.activity_looper.*
-import kotlin.concurrent.thread
 
 class LooperActivity : AppCompatActivity() {
 
-    var count =0;
-    var handler =object :Handler(){
+    var count = 0;
+    var handler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
             super.handleMessage(msg)
-            tv_count.setText(msg.obj.toString())
+            tv_count.text = msg.obj.toString()
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_looper)
@@ -30,27 +31,27 @@ class LooperActivity : AppCompatActivity() {
 
     private fun startWorkerThread() {
 //        var simpleWorker = SimpleWorker("Looper Thread",tv_count)
-        var simpleWorker = SimpleWorker()
+        val simpleWorker = SimpleWorker()
         simpleWorker.execute(Runnable {
             Thread.sleep(2000)
-            count+=1
-            var msg = Message()
+            count += 1
+            val msg = Message()
             msg.obj = count
             println("First ${count}")
             println("First ${Thread.currentThread().name}")
             handler.sendMessage(msg)
         }).execute(Runnable {
             Thread.sleep(2000)
-            count+=1
-            var msg = Message()
+            count += 1
+            val msg = Message()
             msg.obj = count
             println("Second ${count}")
             println("Second ${Thread.currentThread()}")
             handler.sendMessage(msg)
         }).execute(Runnable {
             Thread.sleep(2000)
-            count+=1
-            var msg = Message()
+            count += 1
+            val msg = Message()
             msg.obj = count
             handler.sendMessage(msg)
             println("Third ${count}")
@@ -59,16 +60,16 @@ class LooperActivity : AppCompatActivity() {
 
         simpleWorker.execute(Runnable {
             Thread.sleep(2000)
-            count+=1
-            var msg = Message()
+            count += 1
+            val msg = Message()
             msg.obj = count
             handler.sendMessage(msg)
             println("Forth ${count}")
             println("Forth ${Thread.currentThread()}")
         }).execute(Runnable {
             Thread.sleep(2000)
-            count+=1
-            var msg = Message()
+            count += 1
+            val msg = Message()
             msg.obj = count
             handler.sendMessage(msg)
             println("Fivth ${count}")

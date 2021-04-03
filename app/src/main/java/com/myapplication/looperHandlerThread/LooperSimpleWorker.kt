@@ -1,8 +1,7 @@
-package com.myapplication.looper_thread
+package com.myapplication.looperHandlerThread
 
 import android.os.Handler
 import android.os.HandlerThread
-import android.os.Looper
 import android.widget.TextView
 
 
@@ -12,7 +11,7 @@ class LooperSimpleWorker( name:String,tv:TextView)  :HandlerThread(name) {
     init {
        start()
        handler = Handler(looper)
-       tv.setText("In Looper Text INIT")
+        tv.text = "In Looper Text INIT"
 //        Thread.sleep(2000)
     }
 

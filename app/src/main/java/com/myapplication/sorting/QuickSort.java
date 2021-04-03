@@ -10,7 +10,7 @@ public class QuickSort {
         print(arr);
     }
 
-    void quickSort(int arr[],int min , int max){
+    public void quickSort(int arr[],int min , int max){
         if(min<max){
             int pi = partition(arr,min,max);
 

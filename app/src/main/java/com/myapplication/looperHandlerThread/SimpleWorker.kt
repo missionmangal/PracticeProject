@@ -1,8 +1,6 @@
-package com.myapplication.looper_thread
+package com.myapplication.looperHandlerThread
 
 import java.util.concurrent.ConcurrentLinkedQueue
-
-
 
 class SimpleWorker()  :Thread() {
    var taskQueue = ConcurrentLinkedQueue<Runnable>()
@@ -14,9 +12,7 @@ class SimpleWorker()  :Thread() {
     override fun run() {
         println("Thread :: ${currentThread()}")
         while(isActive) {
-            var task = taskQueue.poll()
-            if (task != null)
-                task.run()
+            taskQueue.poll()?.run()
         }
         println("Thread Over:: ${currentThread()}")
     }

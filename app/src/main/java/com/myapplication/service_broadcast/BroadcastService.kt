@@ -2,7 +2,6 @@ package com.myapplication.service_broadcast
 
 import android.app.IntentService
 import android.content.Intent
-import android.os.Handler
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
 class BroadcastService : IntentService("BroadcastService") {
@@ -12,9 +11,10 @@ class BroadcastService : IntentService("BroadcastService") {
                 sendCount(0)
     }
 
+
     private fun sendCount(i: Int) {
 //        Handler().postDelayed({
-            var broadcastIntent = Intent("com.myapplication")
+            val broadcastIntent = Intent("com.myapplication")
             broadcastIntent.putExtra("count","its no $i")
             LocalBroadcastManager.getInstance(this).sendBroadcast(broadcastIntent)
             if(i==10){
